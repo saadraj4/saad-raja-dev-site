@@ -2,14 +2,14 @@ export const experiences = [
   {
     id: 1,
     title: "Full Stack Web Developer",
-    company: "Amber Solutions",
-    duration: "(Sept 2025 - Present)"
+    company: "Vantage Soft (NASTP), Rawalpindi, Pakistan",
+    duration: "(Feb 2026 - Present)"
   },
   {
     id: 2,
     title: "Web Developer",
     company: "Upwork (Freelancer)",
-    duration: "(Jan 2024 - Aug 2025)"
+    duration: "(Jan 2025 - Present)"
   },
   {
     id: 3,
@@ -29,10 +29,4 @@ export const experiences = [
     company: "Fiverr (Freelancer)",
     duration: "(Sept 2022 - Dec 2023)"
   },
-  {
-    id: 6,
-    title: "Self Employed",
-    company: "Code and build something in everyday.",
-    duration: "(Jan 2021 - Present)"
-  }
 ]
