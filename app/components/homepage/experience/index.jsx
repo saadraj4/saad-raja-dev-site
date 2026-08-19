@@ -1,82 +1,100 @@
-// @flow strict
+import Reveal from "../../reveal";
+import { FiBriefcase } from "react-icons/fi";
 
-import { experiences } from "@/utils/data/experience";
-import Image from "next/image";
-import { BsPersonWorkspace } from "react-icons/bs";
-import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
-import experience from '/public/lottie/code.json';
+const experiences = [
+  {
+    role: "Full Stack Web Developer",
+    org: "Vantage Soft (NASTP)",
+    location: "Rawalpindi, Pakistan",
+    date: "Feb 2026 — Present",
+    status: "Current",
+    desc: "Architecting and developing production web applications, robust client dashboards, and responsive frontends.",
+  },
+  {
+    role: "Full Stack Web Developer",
+    org: "Upwork",
+    location: "Global Remote",
+    date: "Jan 2025 — Present",
+    status: "Freelance",
+    desc: "Delivering end-to-end full-stack web solutions, API integrations, and tailored software products for international clients.",
+  },
+  {
+    role: "Full Stack Web Developer",
+    org: "Ai Pinnacle (NASTP)",
+    location: "Rawalpindi, Pakistan",
+    date: "Aug — Dec 2024",
+    desc: "Engineered performant full-stack modules, data workflows, and intuitive web interfaces.",
+  },
+  {
+    role: "MERN Stack Developer",
+    org: "EESS Solutions",
+    location: "Karachi, Pakistan (Remote)",
+    date: "Sept 2023 — July 2024",
+    desc: "Built scalable web features across React frontend and Node/Express/MongoDB backend services.",
+  },
+  {
+    role: "Web Developer & Freelancer",
+    org: "Fiverr",
+    location: "Global Remote",
+    date: "Sept 2022 — Dec 2023",
+    desc: "Developed responsive web pages, custom UI components, and client web applications.",
+  },
+];
 
 function Experience() {
   return (
-    <div id="experience" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-      />
+    <section id="experience" className="py-24 border-t border-line bg-white">
+      <div className="wrap">
+        <Reveal>
+          <div className="kicker">Experience &amp; Track Record</div>
+          <h2 className="sec-title">Where I&apos;ve built and shipped</h2>
+          <p className="sec-subtitle">
+            A track record of engineering impact across technology hubs, software
+            studios, and international client collaborations.
+          </p>
+        </Reveal>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Experiences
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+        <div className="mt-12 space-y-4">
+          {experiences.map((exp, idx) => (
+            <Reveal
+              key={exp.role + exp.org}
+              delay={0.06 * (idx + 1)}
+              className="timeline-row group"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-xl bg-bg-soft text-muted group-hover:text-accent group-hover:bg-accent-tint transition-colors mt-0.5">
+                  <FiBriefcase size={16} />
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-base font-bold text-ink">
+                      {exp.role}
+                    </h3>
+                    <span className="text-sm font-semibold text-accent">
+                      @ {exp.org}
+                    </span>
+                    {exp.status && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">
+                        {exp.status}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted mt-1 leading-relaxed max-w-xl">
+                    {exp.desc}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-2 sm:mt-0 text-left sm:text-right shrink-0">
+                <div className="text-xs font-semibold text-ink">{exp.date}</div>
+                <div className="text-[11px] text-muted-2">{exp.location}</div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
-
-      <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 lg:items-center">
-          <div className="flex justify-center items-center min-h-full">
-            <div className="w-full max-w-lg">
-              <AnimationLottie animationPath={experience} />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex flex-col gap-6">
-              {
-                experiences.map(experience => (
-                  <GlowCard key={experience.id} identifier={`experience-${experience.id}`}>
-                    <div className="p-3 relative">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {experience.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
-                          <BsPersonWorkspace size={36} />
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {experience.title}
-                          </p>
-                          <p className="text-sm sm:text-base">
-                            {experience.company}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </GlowCard>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Experience;

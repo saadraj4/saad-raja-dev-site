@@ -1,99 +1,70 @@
-// @flow strict
-import { personalData } from '@/utils/data/personal-data';
-import Link from 'next/link';
-import { BiLogoLinkedin } from "react-icons/bi";
-import { CiLocationOn } from "react-icons/ci";
-import { FaFacebook, FaStackOverflow , FaInstagramSquare } from 'react-icons/fa';
-import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoGithub, IoMdCall } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
-import ContactForm from './contactForm.jsx';
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { personalData } from "@/utils/data/personal-data";
+import Reveal from "../../reveal";
+import { FiMail, FiCopy, FiCheck, FiArrowRight } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 function ContactSection() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personalData.email);
+    setCopied(true);
+    toast.success("Email copied to clipboard!");
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   return (
-    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
-      <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          CONTACT
-        </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        <ContactForm />
+    <section id="contact" className="py-24 border-t border-line bg-white">
+      <div className="wrap">
+        <Reveal className="contact-hero">
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-wider mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+              Ready When You Are
+            </span>
 
-        <div className="lg:w-3/4 ">
-          <div className="flex flex-col gap-5 lg:gap-9">
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <MdAlternateEmail
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>{personalData.email}</span>
-            </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <IoMdCall
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.phone}
-              </span>
-            </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <CiLocationOn
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.address}
-              </span>
-            </p>
-          </div>
-          {/*<div className="mt-8 lg:mt-16 flex items-center gap-5 lg:gap-10">*/}
-          <div className="mt-8 lg:mt-16 flex items-center justify-between gap-1w">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              Have a product you need built or fixed?
+            </h2>
 
-            <Link target="_blank" href={personalData.github}>
-              <IoLogoGithub
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.linkedIn}>
-              <BiLogoLinkedin
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.twitter}>
-              <FaXTwitter
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.stackOverflow}>
-              <FaStackOverflow
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.facebook}>
-              <FaFacebook
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.instagram}>
-              <FaInstagramSquare
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-           
+            <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto">
+              Tell me what you&apos;re trying to solve. I&apos;ll give you an
+              honest evaluation of whether I&apos;m the right fit, the
+              architecture required, and what it takes to get it live.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href={`mailto:${personalData.email}?subject=Project%20Inquiry%20-%20Saad%20Raja`}
+                className="btn-primary !text-base !py-3.5 !px-7 w-full sm:w-auto justify-center"
+              >
+                <FiMail size={18} />
+                <span>Email: {personalData.email}</span>
+                <FiArrowRight size={16} />
+              </Link>
+
+              <button
+                onClick={handleCopyEmail}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-white/20 bg-white/10 text-white hover:bg-white/20 text-sm font-semibold transition-all w-full sm:w-auto cursor-pointer"
+              >
+                {copied ? <FiCheck size={16} className="text-green-400" /> : <FiCopy size={16} />}
+                <span>{copied ? "Copied to Clipboard!" : "Copy Email"}</span>
+              </button>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-400">
+              <span className="w-2 h-2 rounded-full bg-green-400" />
+              <span>Typically responds within 24 hours · Direct engineer contact</span>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default ContactSection;

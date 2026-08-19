@@ -1,44 +1,60 @@
-// @flow strict
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { personalData } from "@/utils/data/personal-data";
+import { FiArrowUpRight, FiDownload } from "react-icons/fi";
 
 function Navbar() {
   return (
-    <nav className="bg-transparent">
-      <div className="flex items-center justify-between py-5">
-        <div className="flex flex-shrink-0 items-center">
-          <Link
-            href="/"
-            className=" text-[#16f2b3] text-3xl font-bold">
-            Saad Raja
+    <nav className="site-nav">
+      <div className="nav-container">
+        <div className="flex items-center gap-3">
+          <Link href="/" className="nav-logo">
+            <span className="font-extrabold text-[17px] tracking-tight">
+              Saad Raja
+            </span>
+          </Link>
+          <div className="hidden sm:flex items-center">
+            <span className="status-badge">
+              <span className="status-dot"></span>
+              Available for new projects
+            </span>
+          </div>
+        </div>
+
+        <div className="hidden md:flex items-center gap-6 text-[13.5px] font-medium text-muted">
+          <Link href="#solve" className="nav-link">
+            What I Solve
+          </Link>
+          <Link href="#stack" className="nav-link">
+            Stack
+          </Link>
+          <Link href="#work" className="nav-link">
+            Production Work
+          </Link>
+          <Link href="#experience" className="nav-link">
+            Experience
           </Link>
         </div>
 
-        <ul className="mt-4 flex h-screen max-h-0 w-full flex-col items-start text-sm opacity-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:opacity-100" id="navbar-default">
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#about">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">ABOUT</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#experience"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">EXPERIENCE</div></Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#skills"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">SKILLS</div></Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#education"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">EDUCATION</div></Link>
-          </li>
-          {/*<li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/blog"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">BLOGS</div></Link>
-          </li>*/}
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#projects"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">PROJECTS</div></Link>
-          </li>
-        </ul>
+        <div className="flex items-center gap-3">
+          <Link
+            href={personalData.resume}
+            target="_blank"
+            download
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-lg border border-line hover:border-ink transition-colors text-ink"
+          >
+            <FiDownload size={13} />
+            <span>Resume</span>
+          </Link>
+          <Link href="#contact" className="nav-btn">
+            <span>Get in Touch</span>
+            <FiArrowUpRight size={14} />
+          </Link>
+        </div>
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

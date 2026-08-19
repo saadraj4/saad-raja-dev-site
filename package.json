@@ -14,6 +14,7 @@
     "@next/third-parties": "latest",
     "axios": "latest",
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^13.1.0",
     "lottie-react": "latest",
     "next": "latest",
     "react": "latest",

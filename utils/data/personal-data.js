@@ -16,5 +16,5 @@ export const personalData = {
   stackOverflow: 'https://stackoverflow.com/users/21936390/saad-raja',
   leetcode: "",
   devUsername: "",
-  resume: ""
+  resume: "/Saad_Ahmed_Raja_Software_Engineer.pdf"
 }

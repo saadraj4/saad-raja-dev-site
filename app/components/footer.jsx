@@ -1,21 +1,58 @@
-// @flow strict
-import Link from 'next/link';
+import Link from "next/link";
+import { personalData } from "@/utils/data/personal-data";
+import { FiGithub, FiLinkedin, FiDownload, FiArrowUp } from "react-icons/fi";
 
 function Footer() {
   return (
-    <div className="relative border-t bg-[#0d1224] border-[#353951] text-white">
-      <div className="mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] py-6 lg:py-10">
-        <div className="flex justify-center -z-40">
-          <div className="absolute top-0 h-[1px] w-1/2  bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
+    <footer className="site-footer bg-white">
+      <div className="wrap flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="text-xs text-muted text-center sm:text-left">
+          <span className="font-semibold text-ink">Saad Ahmed Raja</span> · Full Stack Software Engineer
+          <div className="text-[11px] text-muted-2 mt-0.5">
+            © {new Date().getFullYear()} All rights reserved · Rawalpindi, Pakistan
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm">
-            © Developer Portfolio by <Link target="_blank" href="https://www.linkedin.com/in/saad-raj4/" className="text-[#16f2b3]">Saad Raja</Link>
-          </p>
+
+        <div className="flex items-center gap-5 text-xs font-semibold text-muted">
+          <Link
+            href={personalData.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-ink transition-colors flex items-center gap-1"
+          >
+            <FiGithub size={13} />
+            <span>GitHub</span>
+          </Link>
+          <Link
+            href={personalData.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-ink transition-colors flex items-center gap-1"
+          >
+            <FiLinkedin size={13} />
+            <span>LinkedIn</span>
+          </Link>
+          <Link
+            href={personalData.resume}
+            target="_blank"
+            download
+            className="hover:text-accent transition-colors flex items-center gap-1"
+          >
+            <FiDownload size={13} />
+            <span>Resume</span>
+          </Link>
+          <a
+            href="#"
+            className="hover:text-ink transition-colors flex items-center gap-1 text-muted-2"
+            title="Scroll to top"
+          >
+            <FiArrowUp size={13} />
+            <span>Top</span>
+          </a>
         </div>
       </div>
-    </div >
+    </footer>
   );
-};
+}
 
 export default Footer;
