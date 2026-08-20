@@ -1,54 +1,74 @@
 export const productionProjects = [
   {
-    number: "01",
+    badge: "Restaurant Web Experience",
     name: "Oven N Grill",
-    label: "Production Website",
-    description:
-      "Production web experience for a restaurant and food business, delivering an online presence for menu browsing and customer engagement.",
+    domain: "ovenngrill.com",
+    title: "High-Performance Restaurant Web Platform & Digital Ordering Experience",
+    outcome:
+      "Engineered a modern web presence for a restaurant brand to showcase menu offerings, improve local search visibility, and streamline customer discovery.",
     contribution:
-      "Developed the frontend interface and integrated backend services for the web application.",
-    tools: ["React", "Vite", "JavaScript"],
-    website: "https://ovenngrill.com",
+      "Developed the responsive frontend interface using React and Vite, implemented dynamic menu displays, and integrated backend endpoints for order and customer engagement.",
+    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "REST APIs"],
+    link: "https://ovenngrill.com",
+    isExternal: true,
+    image: "/image/oven-ngrill.jpg",
   },
   {
-    number: "02",
+    badge: "Automotive Dealership (UK)",
     name: "Mandeville Motors",
-    label: "Production Automotive Platform",
-    description:
-      "A production automotive web experience designed around vehicle discovery and customer interaction for a UK-based motor dealership.",
+    domain: "mandevillemotors.co.uk",
+    title: "Automotive Vehicle Discovery & Lead Generation Platform",
+    outcome:
+      "Built a fast, search-optimized vehicle discovery platform for a UK-based motor dealership, facilitating vehicle catalog browsing and direct customer inquiries.",
     contribution:
-      "Developed frontend features and responsive interfaces for the vehicle browsing and enquiry experience.",
-    tools: ["React", "Vite", "JavaScript"],
-    website: "https://mandevillemotors.co.uk",
+      "Engineered the responsive vehicle catalog browsing experience, search and detail interfaces, and lead inquiry workflows with high mobile responsiveness.",
+    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "Responsive Design"],
+    link: "https://mandevillemotors.co.uk/",
+    isExternal: true,
+    image: "/image/mandeville-motors.jpg",
   },
   {
-    number: "03",
+    badge: "Commercial B2B Marketplace",
     name: "CleanersCompare",
-    label: "Production Marketplace Platform",
-    description:
-      "A production marketplace platform for the laundry and dry cleaning industry, enabling buyers to compare equipment and suppliers to list products and services.",
+    domain: "cleanerscompare.com",
+    title: "B2B Comparison Marketplace for Laundry & Dry Cleaning Industry",
+    outcome:
+      "Developed a dedicated commercial marketplace connecting laundry businesses with suppliers for new/used equipment, spare parts, and specialized engineering services.",
     contribution:
-      "Contributed to the development of the platform, implementing features across the product listing, search, and user interaction flows.",
-    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    website: "https://www.cleanerscompare.com",
+      "Contributed to the Next.js full-stack platform, implementing product catalog filtering, supplier product showcase flows, and SEO-optimized buyer landing pages.",
+    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Full Stack"],
+    link: "https://www.cleanerscompare.com/",
+    isExternal: true,
+    image: "/image/cleaners-compare.jpg",
   },
 ];
 
-export const personalProjects = [
+export const technicalProjects = [
   {
-    name: "Book It",
+    badge: "Web3 Engineering",
+    name: "Book It — Blockchain Ticketing",
+    title: "Tamper-Proof Decentralized Booking & Ticket Verification System",
     outcome:
-      "Built a transparent, tamper-resistant blockchain booking system.",
-    how: "Blockchain-based booking platform using Ethereum/Web3 with a React frontend and backend services.",
-    tools: ["React", "Ethereum", "Express", "MongoDB"],
-    github: "https://github.com/saadraj4/fyp-bookit",
+      "Solved ticket scalping and counterfeit fraud by logging bookings on Ethereum smart contracts, backed by Stripe for fiat payment onboarding.",
+    tools: ["React", "Ethereum", "Express", "MongoDB", "Stripe"],
+    link: "https://github.com/saadraj4/fyp-bookit",
   },
   {
-    name: "Motion Analysis",
+    badge: "Machine Learning",
+    name: "Telecom Churn Prediction",
+    title: "Predictive Subscriber Churn Modeling & Risk Factor Identification",
     outcome:
-      "Turned raw motion-sensor data into usable movement insights.",
-    tools: ["Python", "NumPy", "Pandas", "Kalman Filter"],
-    github:
-      "https://github.com/saadraj4/Motion_Analysis_using_Accelerometer_and_Gyroscope_Data",
+      "Built predictive machine learning models to surface high-risk customer churn indicators, enabling data-backed retention intervention.",
+    tools: ["Python", "scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
+    link: "https://github.com/saadraj4/Analysis-of-telecom-Customer-Churn",
+  },
+  {
+    badge: "Signal Processing",
+    name: "Sensor Motion Analysis",
+    title: "Kalman Filter Pipeline for Real-Time Kinematic & Speed Estimation",
+    outcome:
+      "Processed raw accelerometer and gyroscope sensor telemetry into smoothed motion events and real-time velocity metrics.",
+    tools: ["Python", "NumPy", "Kalman Filter", "Pandas"],
+    link: "https://github.com/saadraj4/Motion_Analysis_using_Accelerometer_and_Gyroscope_Data",
   },
 ];

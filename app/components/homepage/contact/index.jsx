@@ -31,8 +31,12 @@ function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
-      <div className="wrap">
+    <section id="contact" className="py-24 border-t border-line section-elevated overflow-hidden relative">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-accent/8 via-accent/4 to-transparent rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-blue-500/6 to-transparent rounded-full blur-[100px] pointer-events-none translate-x-1/3 translate-y-1/3" />
+      
+      <div className="wrap relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Info Column */}
@@ -58,7 +62,7 @@ function ContactSection() {
             <div className="space-y-3">
               <Reveal direction="left" delay={0.15}>
                 <MagneticCard intensity={3}>
-                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line bg-white shadow-sm">
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line glass-card layer-2 hover:border-accent/30 transition-all hover:shadow-lg">
                     <div className="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
                       <FiMail size={18} />
                     </div>
@@ -79,7 +83,7 @@ function ContactSection() {
 
               <Reveal direction="left" delay={0.2}>
                 <MagneticCard intensity={3}>
-                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line bg-white shadow-sm">
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line glass-card layer-2 hover:border-accent/30 transition-all hover:shadow-lg">
                     <div className="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
                       <FiPhone size={18} />
                     </div>
@@ -93,7 +97,7 @@ function ContactSection() {
 
               <Reveal direction="left" delay={0.25}>
                 <MagneticCard intensity={3}>
-                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line bg-white shadow-sm">
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line glass-card layer-2 hover:border-accent/30 transition-all hover:shadow-lg">
                     <div className="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
                       <FiMapPin size={18} />
                     </div>
@@ -118,7 +122,7 @@ function ContactSection() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-lg border border-line bg-white text-muted transition-all flex items-center justify-center ${social.color}`}
+                      className={`p-3 rounded-lg border border-line glass-card text-muted transition-all flex items-center justify-center layer-2 hover:shadow-md ${social.color}`}
                       whileHover={{ y: -3, scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       title={social.name}

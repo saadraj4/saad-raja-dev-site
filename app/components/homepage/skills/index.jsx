@@ -12,8 +12,14 @@ function Skills() {
   const activeSkills = skillsData.filter(Boolean);
 
   return (
-    <section id="skills" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
-      <div className="wrap">
+    <section id="skills" className="py-24 border-t border-line section-elevated overflow-hidden relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 -right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px]" />
+      </div>
+      
+      <div className="wrap relative z-10">
         <Reveal direction="up" delay={0.1}>
           <div className="kicker">My Tech Toolkit</div>
           <h2 className="sec-title">Skills &amp; Technologies</h2>
@@ -42,11 +48,13 @@ function Skills() {
               <motion.div
                 className="w-36 min-w-[140px] m-4 cursor-pointer"
                 key={id}
-                whileHover={{ scale: 1.08, y: -4 }}
+                whileHover={{ scale: 1.08, y: -6 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
-                <div className="rounded-xl border border-line bg-white p-5 flex flex-col items-center justify-center gap-3 transition-colors hover:border-accent/40 shadow-sm hover:shadow-md">
-                  <div className="h-10 sm:h-12 w-10 sm:w-12 flex items-center justify-center">
+                <div className="rounded-xl border border-line glass-card p-5 flex flex-col items-center justify-center gap-3 transition-all hover:border-accent/40 shadow-sm hover:shadow-lg layer-2 group relative overflow-hidden">
+                  {/* Hover gradient effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="h-10 sm:h-12 w-10 sm:w-12 flex items-center justify-center relative z-10">
                     {imgData?.src ? (
                       <Image
                         src={imgData.src}
@@ -61,7 +69,7 @@ function Skills() {
                       </div>
                     )}
                   </div>
-                  <p className="text-ink font-semibold text-xs sm:text-sm text-center truncate w-full">
+                  <p className="text-ink font-semibold text-xs sm:text-sm text-center truncate w-full relative z-10 group-hover:text-accent transition-colors">
                     {skill}
                   </p>
                 </div>

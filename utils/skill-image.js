@@ -43,6 +43,7 @@ import memsql from '/public/svg/skills/memsql.svg';
 import microsoftoffice from '/public/svg/skills/microsoftoffice.svg';
 import mongoDB from '/public/svg/skills/mongoDB.svg';
 import mysql from '/public/svg/skills/mysql.svg';
+import nodejs from '/public/svg/skills/nodejs.svg'
 import nextJS from '/public/svg/skills/nextJS.svg';
 import nginx from '/public/svg/skills/nginx.svg';
 import numpy from '/public/svg/skills/numpy.svg';
@@ -66,6 +67,7 @@ import tailwind from '/public/svg/skills/tailwind.svg';
 import tensorflow from '/public/svg/skills/tensorflow.svg';
 import typescript from '/public/svg/skills/typescript.svg';
 import unity from '/public/svg/skills/unity.svg';
+import ubuntu from '/public/svg/skills/ubuntu.svg'
 import vitejs from '/public/svg/skills/vitejs.svg';
 import vue from '/public/svg/skills/vue.svg';
 import vuetifyjs from '/public/svg/skills/vuetifyjs.svg';
@@ -225,6 +227,10 @@ export const skillsImage = (skill) => {
       return wolframalpha;
     case 'canva':
       return canva;
+    case 'node js':
+      return nodejs;
+    case 'ubuntu':
+      return ubuntu;
     default:
       break;
   }

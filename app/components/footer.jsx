@@ -4,8 +4,10 @@ import { FiGithub, FiLinkedin, FiDownload, FiArrowUp } from "react-icons/fi";
 
 function Footer() {
   return (
-    <footer className="site-footer bg-white">
-      <div className="wrap flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="site-footer bg-gradient-to-br from-white to-bg-soft relative overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-accent/3 to-transparent pointer-events-none" />
+      <div className="wrap flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
         <div className="text-xs text-muted text-center sm:text-left">
           <span className="font-semibold text-ink">Saad Ahmed Raja</span> · Full Stack Software Engineer
           <div className="text-[11px] text-muted-2 mt-0.5">
@@ -18,7 +20,7 @@ function Footer() {
             href={personalData.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink transition-colors flex items-center gap-1"
+            className="hover:text-accent transition-all flex items-center gap-1 hover:scale-105"
           >
             <FiGithub size={13} />
             <span>GitHub</span>
@@ -27,7 +29,7 @@ function Footer() {
             href={personalData.linkedIn}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink transition-colors flex items-center gap-1"
+            className="hover:text-accent transition-all flex items-center gap-1 hover:scale-105"
           >
             <FiLinkedin size={13} />
             <span>LinkedIn</span>
@@ -36,14 +38,14 @@ function Footer() {
             href={personalData.resume}
             target="_blank"
             download
-            className="hover:text-accent transition-colors flex items-center gap-1"
+            className="hover:text-accent transition-all flex items-center gap-1 hover:scale-105"
           >
             <FiDownload size={13} />
             <span>Resume</span>
           </Link>
           <a
             href="#"
-            className="hover:text-ink transition-colors flex items-center gap-1 text-muted-2"
+            className="hover:text-accent transition-all flex items-center gap-1 text-muted-2 hover:scale-105"
             title="Scroll to top"
           >
             <FiArrowUp size={13} />

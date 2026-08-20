@@ -1,72 +1,42 @@
 "use client";
 
-import Reveal from "../../reveal";
 import { FiBriefcase } from "react-icons/fi";
 import { motion } from "framer-motion";
-
-const experiences = [
-  {
-    role: "Full Stack Web Developer",
-    org: "Vantage Soft (NASTP)",
-    location: "Rawalpindi, Pakistan",
-    date: "Feb 2026 — Present",
-    status: "Current",
-    desc: "Architecting and developing production web applications, robust client dashboards, and responsive frontends.",
-  },
-  {
-    role: "Full Stack Web Developer",
-    org: "Upwork",
-    location: "Global Remote",
-    date: "Jan 2025 — Present",
-    status: "Freelance",
-    desc: "Delivering end-to-end full-stack web solutions, API integrations, and tailored software products for international clients.",
-  },
-  {
-    role: "Full Stack Web Developer",
-    org: "Ai Pinnacle (NASTP)",
-    location: "Rawalpindi, Pakistan",
-    date: "Aug — Dec 2024",
-    desc: "Engineered performant full-stack modules, data workflows, and intuitive web interfaces.",
-  },
-  {
-    role: "MERN Stack Developer",
-    org: "EESS Solutions",
-    location: "Karachi, Pakistan (Remote)",
-    date: "Sept 2023 — July 2024",
-    desc: "Built scalable web features across React frontend and Node/Express/MongoDB backend services.",
-  },
-  {
-    role: "Web Developer & Freelancer",
-    org: "Fiverr",
-    location: "Global Remote",
-    date: "Sept 2022 — Dec 2023",
-    desc: "Developed responsive web pages, custom UI components, and client web applications.",
-  },
-];
+import { experiences } from "@/utils/data/experience";
 
 function Experience() {
   return (
-    <section id="experience" className="py-24 border-t border-line bg-white overflow-hidden">
-      <div className="wrap">
-        <Reveal direction="up" delay={0.1}>
+    <section id="experience" className="py-24 border-t border-line bg-gradient-to-b from-white to-bg-soft overflow-hidden relative">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-30 bg-grid-pattern pointer-events-none" />
+      
+      <div className="wrap relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="kicker">Experience &amp; Track Record</div>
           <h2 className="sec-title">Where I&apos;ve built and shipped</h2>
           <p className="sec-subtitle">
             A track record of engineering impact across technology hubs, software
             studios, and international client collaborations.
           </p>
-        </Reveal>
+        </motion.div>
 
-        <div className="mt-12 space-y-6 relative before:absolute before:top-2 before:bottom-2 before:left-[21px] before:w-[2px] before:bg-line">
+        <div className="mt-12 space-y-6 relative before:absolute before:top-2 before:bottom-2 before:left-[21px] before:w-[2px] before:bg-gradient-to-b before:from-accent/40 before:via-accent/20 before:to-transparent">
           {experiences.map((exp, idx) => (
-            <Reveal
+            <motion.div
               key={exp.role + exp.org}
-              direction={idx % 2 === 0 ? "left" : "right"}
-              delay={0.06 * (idx + 1)}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 * (idx + 1) }}
               className="relative z-10"
             >
               <motion.div
-                className="timeline-row group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-5 sm:p-6 bg-white border border-line rounded-xl hover:bg-bg-soft/50 hover:border-accent/30 hover:shadow-md transition-all duration-300 cursor-pointer"
+                className="timeline-row group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-5 sm:p-6 glass-card border border-line rounded-xl hover:border-accent/30 hover:shadow-xl transition-all duration-300 cursor-pointer layer-2"
                 whileHover={{ x: idx % 2 === 0 ? 8 : -8 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
@@ -102,7 +72,7 @@ function Experience() {
                   <div className="text-[11px] text-muted-2">{exp.location}</div>
                 </div>
               </motion.div>
-            </Reveal>
+            </motion.div>
           ))}
         </div>
       </div>

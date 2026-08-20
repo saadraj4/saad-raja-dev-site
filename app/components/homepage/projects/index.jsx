@@ -1,91 +1,20 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "../../reveal";
 import { FiExternalLink, FiGithub, FiArrowRight } from "react-icons/fi";
 import MagneticCard from "../../motion/magnetic-card";
 import { motion } from "framer-motion";
-
-const productionProjects = [
-  {
-    badge: "Production Client · Restaurant Web Experience",
-    name: "Oven N Grill",
-    domain: "ovenngrill.com",
-    title: "High-Performance Restaurant Web Platform & Digital Ordering Experience",
-    outcome:
-      "Engineered a modern web presence for a restaurant brand to showcase menu offerings, improve local search visibility, and streamline customer discovery.",
-    contribution:
-      "Developed the responsive frontend interface using React and Vite, implemented dynamic menu displays, and integrated backend endpoints for order and customer engagement.",
-    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "REST APIs"],
-    link: "https://ovenngrill.com",
-    isExternal: true,
-    image: "/image/oven-ngrill.jpg",
-  },
-  {
-    badge: "Production Client · Automotive Dealership (UK)",
-    name: "Mandeville Motors",
-    domain: "mandevillemotors.co.uk",
-    title: "Automotive Vehicle Discovery & Lead Generation Platform",
-    outcome:
-      "Built a fast, search-optimized vehicle discovery platform for a UK-based motor dealership, facilitating vehicle catalog browsing and direct customer inquiries.",
-    contribution:
-      "Engineered the responsive vehicle catalog browsing experience, search and detail interfaces, and lead inquiry workflows with high mobile responsiveness.",
-    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "Responsive Design"],
-    link: "https://mandevillemotors.co.uk/",
-    isExternal: true,
-    image: "/image/mandeville-motors.jpg",
-  },
-  {
-    badge: "Production Platform · Commercial B2B Marketplace",
-    name: "CleanersCompare",
-    domain: "cleanerscompare.com",
-    title: "B2B Comparison Marketplace for Laundry & Dry Cleaning Industry",
-    outcome:
-      "Developed a dedicated commercial marketplace connecting laundry businesses with suppliers for new/used equipment, spare parts, and specialized engineering services.",
-    contribution:
-      "Contributed to the Next.js full-stack platform, implementing product catalog filtering, supplier product showcase flows, and SEO-optimized buyer landing pages.",
-    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Full Stack"],
-    link: "https://www.cleanerscompare.com/",
-    isExternal: true,
-    image: "/image/cleaners-compare.jpg",
-  },
-];
-
-const technicalProjects = [
-  {
-    badge: "Web3 Engineering",
-    name: "Book It — Blockchain Ticketing",
-    title: "Tamper-Proof Decentralized Booking & Ticket Verification System",
-    outcome:
-      "Solved ticket scalping and counterfeit fraud by logging bookings on Ethereum smart contracts, backed by Stripe for fiat payment onboarding.",
-    tools: ["React", "Ethereum", "Express", "MongoDB", "Stripe"],
-    link: "https://github.com/saadraj4/fyp-bookit",
-  },
-  {
-    badge: "Machine Learning",
-    name: "Telecom Churn Prediction",
-    title: "Predictive Subscriber Churn Modeling & Risk Factor Identification",
-    outcome:
-      "Built predictive machine learning models to surface high-risk customer churn indicators, enabling data-backed retention intervention.",
-    tools: ["Python", "scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
-    link: "https://github.com/saadraj4/Analysis-of-telecom-Customer-Churn",
-  },
-  {
-    badge: "Signal Processing",
-    name: "Sensor Motion Analysis",
-    title: "Kalman Filter Pipeline for Real-Time Kinematic & Speed Estimation",
-    outcome:
-      "Processed raw accelerometer and gyroscope sensor telemetry into smoothed motion events and real-time velocity metrics.",
-    tools: ["Python", "NumPy", "Kalman Filter", "Pandas"],
-    link: "https://github.com/saadraj4/Motion_Analysis_using_Accelerometer_and_Gyroscope_Data",
-  },
-];
+import { productionProjects, technicalProjects } from "../../../../utils/data/projects-data"
 
 function WorkSection() {
   return (
-    <section id="work" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
-      <div className="wrap">
+    <section id="work" className="py-24 border-t border-line section-elevated overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-[400px] h-[400px] bg-gradient-to-tr from-blue-500/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="wrap relative z-10">
         <Reveal direction="up" delay={0.1}>
           <div className="kicker">Selected Production Work</div>
           <h2 className="sec-title">Real products. Real clients. Real outcomes.</h2>
@@ -102,14 +31,23 @@ function WorkSection() {
               key={project.name}
               direction="up"
               delay={0.12 * (idx + 1)}
-              className="showcase-card overflow-hidden border border-line bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500"
+              className="showcase-card overflow-hidden border border-line glass-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 spotlight-hover"
             >
               {/* Browser mockup top bar */}
-              <div className="browser-header bg-bg-soft px-6 py-4 flex items-center justify-between border-b border-line">
+              <div className="browser-header section-elevated px-6 py-4 flex items-center justify-between border-b border-line">
                 <div className="browser-dots flex gap-2">
-                  <span className="browser-dot w-3 h-3 rounded-full bg-red-400/80" />
-                  <span className="browser-dot w-3 h-3 rounded-full bg-yellow-400/80" />
-                  <span className="browser-dot w-3 h-3 rounded-full bg-green-400/80" />
+                  <motion.span
+                    className="browser-dot w-3 h-3 rounded-full bg-red-400"
+                    whileHover={{ scale: 1.3 }}
+                  />
+                  <motion.span
+                    className="browser-dot w-3 h-3 rounded-full bg-yellow-400"
+                    whileHover={{ scale: 1.3 }}
+                  />
+                  <motion.span
+                    className="browser-dot w-3 h-3 rounded-full bg-green-400"
+                    whileHover={{ scale: 1.3 }}
+                  />
                 </div>
                 <div className="browser-address bg-white border border-line rounded px-4 py-1 text-xs text-muted font-mono tracking-wide max-w-xs truncate">
                   https://{project.domain}
@@ -234,7 +172,7 @@ function WorkSection() {
               >
                 <MagneticCard
                   intensity={5}
-                  className="problem-card flex flex-col justify-between h-full bg-white border border-line rounded-xl p-6 hover:shadow-md cursor-pointer group"
+                  className="problem-card flex flex-col justify-between h-full glass-card border border-line rounded-xl p-6 hover:shadow-xl cursor-pointer group spotlight-hover"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">

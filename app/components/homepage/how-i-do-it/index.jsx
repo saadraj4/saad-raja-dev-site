@@ -34,8 +34,12 @@ const stackGroups = [
 
 function HowIDoIt() {
   return (
-    <section id="stack" className="py-24 border-t border-line bg-white overflow-hidden">
-      <div className="wrap">
+    <section id="stack" className="py-24 border-t border-line section-elevated overflow-hidden relative">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="wrap relative z-10">
         <Reveal direction="up" delay={0.1}>
           <div className="kicker">How I Actually Do It</div>
           <h2 className="sec-title">The stack behind the outcome</h2>
@@ -57,7 +61,7 @@ function HowIDoIt() {
               >
                 <MagneticCard
                   intensity={4}
-                  className="p-6 rounded-2xl border border-line bg-bg-soft/40 hover:bg-white hover:border-line hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between group cursor-pointer"
+                  className="p-7 rounded-2xl border border-line glass-card hover:border-accent/30 hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between group cursor-pointer spotlight-hover"
                 >
                   <div>
                     <div className="flex items-center gap-3 mb-3">

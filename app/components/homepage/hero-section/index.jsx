@@ -106,22 +106,37 @@ function HeroSection() {
             Outcome First Engineering
           </motion.div>
 
-          {/* Title — character-by-character reveal */}
+          {/* Title — character-by-character reveal with enhanced styling */}
           <motion.h1
             variants={fadeUp(0.05)}
-            className="text-4xl sm:text-6xl lg:text-[4.2rem] font-extrabold leading-[1.08] tracking-tight text-ink max-w-[860px]"
+            className="text-4xl sm:text-6xl lg:text-[4.2rem] font-extrabold leading-[1.08] tracking-tight text-ink max-w-[860px] relative"
           >
             <AnimatedText text="You bring the problem." />
             <br />
-            <span className="inline-block">
+            <span className="inline-block relative">
               <AnimatedText text="I bring the" />{" "}
               <motion.span
-                className="text-accent underline decoration-accent/30 decoration-wavy decoration-2 underline-offset-8 inline-block"
+                className="relative inline-block"
                 initial={{ backgroundSize: "0% 3px" }}
                 animate={{ backgroundSize: "100% 3px" }}
                 transition={{ duration: 1.2, delay: 1 }}
               >
-                <AnimatedText text="working product." />
+                <span className="text-accent relative inline-block">
+                  <AnimatedText text="working product." />
+                  {/* Animated emphasis effect */}
+                  <motion.span
+                    className="absolute -inset-2 bg-accent/10 -z-10 rounded-lg blur-sm"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.1, 1] }}
+                    transition={{ duration: 2, delay: 1.5, repeat: Infinity, repeatDelay: 3 }}
+                  />
+                  <motion.span
+                    className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-accent/30 via-accent/50 to-accent/30 -z-20 blur-sm"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                  />
+                </span>
               </motion.span>
             </span>
           </motion.h1>
@@ -157,38 +172,71 @@ function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Proof metrics with animated counters */}
+        {/* Proof metrics with animated counters and trust indicators */}
         <motion.div
-          className="mt-16 pt-8 border-t border-line grid grid-cols-1 sm:grid-cols-3 gap-6"
+          className="mt-16 pt-8 border-t border-line relative"
           variants={staggerContainer(0.1, 0.6)}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
         >
-          {metrics.map((m, i) => (
-            <motion.div
-              key={m.label}
-              variants={fadeUp(0)}
-              className="metric-card flex items-start gap-3.5 p-4 rounded-xl bg-bg-soft/60 border border-line/60 group"
-              whileHover={{ y: -3, borderColor: "rgba(229,64,53,0.25)" }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+          {/* Trust badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="mb-6 flex items-center gap-6 flex-wrap"
+          >
+            <div className="flex items-center gap-2 text-xs text-muted">
               <motion.div
-                className="p-2 rounded-lg bg-accent/10 text-accent mt-0.5"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 bg-green-500 rounded-full"
+              />
+              <span className="font-semibold">Available for new projects</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted">
+              <span className="text-lg">⚡</span>
+              <span>Avg. response time: <span className="font-bold text-ink">2 hours</span></span>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted">
+              <span className="text-lg">🌍</span>
+              <span>Remote-ready · <span className="font-bold text-ink">UTC+5</span></span>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {metrics.map((m, i) => (
+              <motion.div
+                key={m.label}
+                variants={fadeUp(0)}
+                className="metric-card flex items-start gap-3.5 p-4 rounded-xl bg-bg-soft/60 border border-line/60 group relative overflow-hidden"
+                whileHover={{ y: -3, borderColor: "rgba(229,64,53,0.25)" }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                <FiCheckCircle size={16} />
-              </motion.div>
-              <div>
-                <div className="text-2xl font-extrabold text-ink tracking-tight">
-                  <AnimatedCounter value={m.value} suffix={m.suffix} />
+                {/* Animated background gradient on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  aria-hidden="true"
+                />
+                
+                <motion.div
+                  className="p-2 rounded-lg bg-accent/10 text-accent mt-0.5 relative z-10"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <FiCheckCircle size={16} />
+                </motion.div>
+                <div className="relative z-10">
+                  <div className="text-2xl font-extrabold text-ink tracking-tight">
+                    <AnimatedCounter value={m.value} suffix={m.suffix} />
+                  </div>
+                  <div className="text-sm font-bold text-ink">{m.label}</div>
+                  <div className="text-xs text-muted mt-0.5">{m.sub}</div>
                 </div>
-                <div className="text-sm font-bold text-ink">{m.label}</div>
-                <div className="text-xs text-muted mt-0.5">{m.sub}</div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </header>
