@@ -2,7 +2,7 @@ import HeroSection from "./components/homepage/hero-section";
 import WhatICanDo from "./components/homepage/what-i-can-do";
 import HowIDoIt from "./components/homepage/how-i-do-it";
 import CodeShowcase from "./components/homepage/code-showcase";
-// import Testimonials from "./components/homepage/testimonials";
+import Testimonials from "./components/homepage/testimonials";
 import WhyMe from "./components/homepage/why-me";
 import WorkSection from "./components/homepage/projects";
 import Experience from "./components/homepage/experience";
@@ -16,7 +16,7 @@ export default function Home() {
       <WhatICanDo />
       <HowIDoIt />
       <CodeShowcase />
-      {/* <Testimonials /> */}
+      <Testimonials />
       <WhyMe />
       <WorkSection />
       <Experience />

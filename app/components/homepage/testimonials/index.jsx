@@ -1,9 +1,11 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import { FiStar, FiQuote } from "react-icons/fi";
+import { FiStar } from "react-icons/fi";
+import { TbQuote } from "react-icons/tb";
 
-const testimonials = [
+const testimonials_review = [
   {
     text: "Saad delivered exactly what we needed. The platform handles hundreds of users daily with zero downtime. His attention to detail and proactive communication made the entire process smooth.",
     author: "Client Review",
@@ -17,7 +19,7 @@ const testimonials = [
     author: "Project Stakeholder",
     role: "Product Manager",
     platform: "Direct Client",
-    rating: 5,
+    rating: 5,  
     highlight: "Fast Execution",
   },
   {
@@ -113,7 +115,7 @@ function Testimonials() {
 
         {/* Testimonials grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, idx) => (
+          {testimonials_review.map((testimonial, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -137,7 +139,7 @@ function Testimonials() {
                     transition={{ duration: 0.5 }}
                     className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4"
                   >
-                    <FiQuote size={20} />
+                    <TbQuote size={20} />
                   </motion.div>
 
                   {/* Rating stars */}
