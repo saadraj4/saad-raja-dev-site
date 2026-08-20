@@ -8,6 +8,7 @@ import WorkSection from "./components/homepage/projects";
 import Experience from "./components/homepage/experience";
 import Skills from "./components/homepage/skills";
 import ContactSection from "./components/homepage/contact";
+import LinkedInRecommendations from "./components/homepage/linkedin-recommendation";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <WhyMe />
       <WorkSection />
       <Experience />
+      {/* <LinkedInRecommendations /> */}
       <Skills />
       <ContactSection />
     </>

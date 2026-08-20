@@ -38,7 +38,7 @@ const problems = [
 
 function WhatICanDo() {
   return (
-    <section id="solve" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
+    <section id="solve" className="py-12 border-t border-line bg-bg-soft/20 overflow-hidden">
       <div className="wrap">
         <Reveal direction="up" delay={0.1}>
           <div className="kicker">What I Can Do For You</div>

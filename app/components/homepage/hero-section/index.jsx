@@ -40,33 +40,35 @@ function HeroSection() {
   const reduced = useReducedMotion();
 
   return (
-    <header className="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
-      {/* Animated gradient orbs */}
+    <header className="relative pt-26 pb-5 md:pt-28 md:pb-10 overflow-hidden">
+      {/* Animated gradient orbs - optimized */}
       <motion.div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-accent/5 blur-[120px] -z-10 pointer-events-none"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-accent/5 -z-10 pointer-events-none rounded-full"
+        style={{ filter: "blur(100px)", willChange: "transform" }}
         aria-hidden="true"
         animate={
           reduced
             ? {}
             : {
-                scale: [1, 1.15, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }
-        }
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-[60%] right-0 w-[400px] h-[400px] bg-accent/3 blur-[100px] -z-10 pointer-events-none rounded-full"
-        aria-hidden="true"
-        animate={
-          reduced
-            ? {}
-            : {
-                x: [0, 30, 0],
                 scale: [1, 1.1, 1],
+                opacity: [0.5, 0.7, 0.5],
               }
         }
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-[60%] right-0 w-[400px] h-[400px] bg-accent/3 -z-10 pointer-events-none rounded-full"
+        style={{ filter: "blur(80px)", willChange: "transform" }}
+        aria-hidden="true"
+        animate={
+          reduced
+            ? {}
+            : {
+                x: [0, 20, 0],
+                scale: [1, 1.05, 1],
+              }
+        }
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Floating particles */}
@@ -174,7 +176,7 @@ function HeroSection() {
 
         {/* Proof metrics with animated counters and trust indicators */}
         <motion.div
-          className="mt-16 pt-8 border-t border-line relative"
+          className="mt-10 pt-5 border-t border-line relative"
           variants={staggerContainer(0.1, 0.6)}
           initial="hidden"
           whileInView="show"
@@ -185,7 +187,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="mb-6 flex items-center gap-6 flex-wrap"
+            className="mb-3 flex items-center gap-6 flex-wrap"
           >
             <div className="flex items-center gap-2 text-xs text-muted">
               <motion.div
