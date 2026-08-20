@@ -1,71 +1,77 @@
-// @flow strict
+"use client";
 
 import { skillsData } from "@/utils/data/skills";
 import { skillsImage } from "@/utils/skill-image";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import Reveal from "../../reveal";
+import { motion } from "framer-motion";
 
 function Skills() {
+  // Filter out any empty items from skills data
+  const activeSkills = skillsData.filter(Boolean);
+
   return (
-    <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl  opacity-20"></div>
-
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
-        </div>
+    <section id="skills" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
+      <div className="wrap">
+        <Reveal direction="up" delay={0.1}>
+          <div className="kicker">My Tech Toolkit</div>
+          <h2 className="sec-title">Skills &amp; Technologies</h2>
+          <p className="sec-subtitle">
+            A comprehensive ecosystem of frontend frameworks, backend engines,
+            databases, and specialized development tools.
+          </p>
+        </Reveal>
       </div>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Skills
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
-
-      <div className="w-full my-12">
+      <div className="w-full mt-14">
         <Marquee
-          gradient={false}
-          speed={80}
+          gradient={true}
+          gradientColor={[248, 249, 250]} // matches bg-soft color #F8F9FA
+          gradientWidth={100}
+          speed={60}
           pauseOnHover={true}
           pauseOnClick={true}
           delay={0}
           play={true}
           direction="left"
         >
-          {skillsData.map((skill, id) => (
-            <div className="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
-              key={id}>
-              <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
-                <div className="flex -translate-y-[1px] justify-center">
-                  <div className="w-3/4">
-                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
+          {activeSkills.map((skill, id) => {
+            const imgData = skillsImage(skill);
+            return (
+              <motion.div
+                className="w-36 min-w-[140px] m-4 cursor-pointer"
+                key={id}
+                whileHover={{ scale: 1.08, y: -4 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
+                <div className="rounded-xl border border-line bg-white p-5 flex flex-col items-center justify-center gap-3 transition-colors hover:border-accent/40 shadow-sm hover:shadow-md">
+                  <div className="h-10 sm:h-12 w-10 sm:w-12 flex items-center justify-center">
+                    {imgData?.src ? (
+                      <Image
+                        src={imgData.src}
+                        alt={skill}
+                        width={44}
+                        height={44}
+                        className="h-full w-auto object-contain rounded"
+                      />
+                    ) : (
+                      <div className="w-8 h-8 rounded bg-accent-tint flex items-center justify-center font-bold text-accent text-xs">
+                        {skill.substring(0, 2)}
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-3 p-6">
-                  <div className="h-8 sm:h-10">
-                    <Image
-                      src={skillsImage(skill)?.src}
-                      alt={skill}
-                      width={40}
-                      height={40}
-                      className="h-full w-auto rounded-lg"
-                    />
-                  </div>
-                  <p className="text-white text-sm sm:text-lg">
+                  <p className="text-ink font-semibold text-xs sm:text-sm text-center truncate w-full">
                     {skill}
                   </p>
                 </div>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            );
+          })}
         </Marquee>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Skills;

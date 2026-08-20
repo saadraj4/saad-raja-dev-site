@@ -4,9 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { personalData } from "@/utils/data/personal-data";
 import Reveal from "../../reveal";
-import { FiMail, FiCopy, FiCheck, FiArrowRight } from "react-icons/fi";
+import ContactForm from "./contactForm";
+import { FiMail, FiCopy, FiCheck, FiArrowUpRight, FiPhone, FiMapPin } from "react-icons/fi";
+import { FaGithub, FaLinkedin, FaTwitter, FaStackOverflow, FaFacebook, FaInstagram } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import MagneticCard from "../../motion/magnetic-card";
 
 function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -18,65 +21,124 @@ function ContactSection() {
     setTimeout(() => setCopied(false), 2500);
   };
 
+  const socials = [
+    { name: "GitHub", url: personalData.github, icon: FaGithub, color: "hover:text-[#24292f] hover:bg-[#24292f]/5" },
+    { name: "LinkedIn", url: personalData.linkedIn, icon: FaLinkedin, color: "hover:text-[#0077b5] hover:bg-[#0077b5]/5" },
+    { name: "Twitter", url: personalData.twitter, icon: FaTwitter, color: "hover:text-[#1da1f2] hover:bg-[#1da1f2]/5" },
+    { name: "StackOverflow", url: personalData.stackOverflow, icon: FaStackOverflow, color: "hover:text-[#f48024] hover:bg-[#f48024]/5" },
+    { name: "Facebook", url: personalData.facebook, icon: FaFacebook, color: "hover:text-[#1877f2] hover:bg-[#1877f2]/5" },
+    { name: "Instagram", url: personalData.instagram, icon: FaInstagram, color: "hover:text-[#e1306c] hover:bg-[#e1306c]/5" },
+  ];
+
   return (
-    <section id="contact" className="py-24 border-t border-line bg-white overflow-hidden">
+    <section id="contact" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
       <div className="wrap">
-        <Reveal direction="scale" delay={0.1} className="contact-hero relative">
-          {/* Pulsing visual glow effect in background */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-30 blur-2xl -z-10 pointer-events-none" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <motion.span 
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-wider mb-6"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-              Ready When You Are
-            </motion.span>
+          {/* Left Info Column */}
+          <div className="lg:col-span-5 space-y-8">
+            <Reveal direction="left" delay={0.1}>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-wider mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                Contact Direct
+              </span>
 
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              Have a product you need built or fixed?
-            </h2>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-ink tracking-tight leading-tight">
+                Let&apos;s build the next thing.
+              </h2>
 
-            <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto">
-              Tell me what you&apos;re trying to solve. I&apos;ll give you an
-              honest evaluation of whether I&apos;m the right fit, the
-              architecture required, and what it takes to get it live.
-            </p>
+              <p className="mt-5 text-sm sm:text-base text-muted leading-relaxed">
+                Tell me what you&apos;re trying to solve. I&apos;ll give you an
+                honest evaluation of whether I&apos;m the right fit, the
+                architecture required, and what it takes to get it live.
+              </p>
+            </Reveal>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <motion.div 
-                className="w-full sm:w-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link
-                  href={`mailto:${personalData.email}?subject=Project%20Inquiry%20-%20Saad%20Raja`}
-                  className="btn-primary !text-base !py-3.5 !px-7 w-full sm:w-auto justify-center group flex items-center gap-2"
-                >
-                  <FiMail size={18} />
-                  <span>Email: {personalData.email}</span>
-                  <FiArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
+            {/* Direct Contact Details Cards */}
+            <div className="space-y-3">
+              <Reveal direction="left" delay={0.15}>
+                <MagneticCard intensity={3}>
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line bg-white shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                      <FiMail size={18} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[10px] font-bold text-muted uppercase tracking-wider">Email Address</p>
+                      <p className="text-sm font-semibold text-ink truncate select-all">{personalData.email}</p>
+                    </div>
+                    <button 
+                      onClick={handleCopyEmail}
+                      className="p-2 text-muted hover:text-accent rounded-lg hover:bg-bg-soft transition-colors cursor-pointer"
+                      title="Copy Email"
+                    >
+                      {copied ? <FiCheck size={16} className="text-green-500" /> : <FiCopy size={16} />}
+                    </button>
+                  </div>
+                </MagneticCard>
+              </Reveal>
 
-              <motion.button
-                onClick={handleCopyEmail}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-white/20 bg-white/10 text-white hover:bg-white/20 text-sm font-semibold transition-all w-full sm:w-auto cursor-pointer"
-                whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {copied ? <FiCheck size={16} className="text-green-400" /> : <FiCopy size={16} />}
-                <span>{copied ? "Copied to Clipboard!" : "Copy Email"}</span>
-              </motion.button>
+              <Reveal direction="left" delay={0.2}>
+                <MagneticCard intensity={3}>
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line bg-white shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                      <FiPhone size={18} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-muted uppercase tracking-wider">Phone</p>
+                      <p className="text-sm font-semibold text-ink">{personalData.phone}</p>
+                    </div>
+                  </div>
+                </MagneticCard>
+              </Reveal>
+
+              <Reveal direction="left" delay={0.25}>
+                <MagneticCard intensity={3}>
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-line bg-white shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-accent-tint text-accent flex items-center justify-center shrink-0">
+                      <FiMapPin size={18} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-muted uppercase tracking-wider">Location</p>
+                      <p className="text-sm font-semibold text-ink">{personalData.address}</p>
+                    </div>
+                  </div>
+                </MagneticCard>
+              </Reveal>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span>Typically responds within 24 hours · Direct engineer contact</span>
-            </div>
+            {/* Social Grid */}
+            <Reveal direction="left" delay={0.3} className="space-y-3">
+              <p className="text-[10px] font-bold text-muted-2 uppercase tracking-wider">Social Links</p>
+              <div className="flex flex-wrap gap-2">
+                {socials.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <motion.a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-3 rounded-lg border border-line bg-white text-muted transition-all flex items-center justify-center ${social.color}`}
+                      whileHover={{ y: -3, scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      title={social.name}
+                    >
+                      <Icon size={18} />
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          {/* Right Form Column */}
+          <div className="lg:col-span-7">
+            <Reveal direction="right" delay={0.2}>
+              <ContactForm />
+            </Reveal>
+          </div>
+
+        </div>
       </div>
     </section>
   );

@@ -32,11 +32,25 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
+  background: 
+    radial-gradient(circle at 5% 10%, rgba(229, 64, 53, 0.025) 0%, transparent 35%),
+    radial-gradient(circle at 95% 85%, rgba(229, 64, 53, 0.02) 0%, transparent 40%),
+    #FCFDFE;
   color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(13, 15, 18, 0.025) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: -20;
 }
 
 ::selection {

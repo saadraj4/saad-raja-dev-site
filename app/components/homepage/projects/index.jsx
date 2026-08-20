@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "../../reveal";
 import { FiExternalLink, FiGithub, FiArrowRight } from "react-icons/fi";
 import MagneticCard from "../../motion/magnetic-card";
@@ -19,6 +20,7 @@ const productionProjects = [
     tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "REST APIs"],
     link: "https://ovenngrill.com",
     isExternal: true,
+    image: "/image/oven-ngrill.jpg",
   },
   {
     badge: "Production Client · Automotive Dealership (UK)",
@@ -32,6 +34,7 @@ const productionProjects = [
     tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "Responsive Design"],
     link: "https://mandevillemotors.co.uk/",
     isExternal: true,
+    image: "/image/mandeville-motors.jpg",
   },
   {
     badge: "Production Platform · Commercial B2B Marketplace",
@@ -45,6 +48,7 @@ const productionProjects = [
     tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Full Stack"],
     link: "https://www.cleanerscompare.com/",
     isExternal: true,
+    image: "/image/cleaners-compare.jpg",
   },
 ];
 
@@ -98,7 +102,7 @@ function WorkSection() {
               key={project.name}
               direction="up"
               delay={0.12 * (idx + 1)}
-              className="showcase-card overflow-hidden group border border-line bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500"
+              className="showcase-card overflow-hidden border border-line bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500"
             >
               {/* Browser mockup top bar */}
               <div className="browser-header bg-bg-soft px-6 py-4 flex items-center justify-between border-b border-line">
@@ -116,71 +120,91 @@ function WorkSection() {
                 </div>
               </div>
 
-              {/* Project Content Body */}
-              <div className="p-8 sm:p-10">
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-accent bg-accent-tint px-3 py-1 rounded-full border border-accent-border">
-                    {project.badge}
-                  </span>
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors group/btn"
-                  >
-                    <span>Visit Live Website</span>
-                    <FiExternalLink size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </Link>
-                </div>
-
-                <h3 className="text-2xl sm:text-4xl font-extrabold text-ink tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
-                  {project.name}
-                </h3>
-                <h4 className="text-base sm:text-lg font-semibold text-muted mb-6 leading-relaxed">
-                  {project.title}
-                </h4>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 pt-6 border-t border-line">
-                  <div className="space-y-2">
-                    <div className="text-xs font-bold uppercase tracking-wider text-muted-2">
-                      The Business Problem &amp; Outcome
-                    </div>
-                    <p className="text-muted text-[14.5px] leading-relaxed">
-                      {project.outcome}
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="text-xs font-bold uppercase tracking-wider text-muted-2">
-                      My Engineering Contribution
-                    </div>
-                    <p className="text-ink font-medium text-[14.5px] leading-relaxed">
-                      {project.contribution}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Technologies used */}
-                <div className="pt-6 border-t border-line/60 flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs text-muted-2 font-semibold mr-1">
-                      Tech:
+              {/* Project Content Body (Split Layout) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8 lg:p-10 items-center">
+                {/* Left Side: Metadata (7 columns on large screens) */}
+                <div className="lg:col-span-7 space-y-5">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-accent bg-accent-tint px-3 py-1 rounded-full border border-accent-border">
+                      {project.badge}
                     </span>
-                    {project.tools.map((tool) => (
-                      <span key={tool} className="tag-pill bg-bg-soft border border-line text-muted text-xs px-2.5 py-1 rounded">
-                        {tool}
-                      </span>
-                    ))}
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors group/btn"
+                    >
+                      <span>Visit Live Website</span>
+                      <FiExternalLink size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    </Link>
                   </div>
 
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary text-xs !py-3 !px-5 flex items-center gap-2"
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
+                    {project.name}
+                  </h3>
+                  <h4 className="text-sm sm:text-base font-semibold text-muted leading-relaxed">
+                    {project.title}
+                  </h4>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-5 border-t border-line">
+                    <div className="space-y-1.5">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-muted-2">
+                        The Business Problem &amp; Outcome
+                      </div>
+                      <p className="text-muted text-xs sm:text-sm leading-relaxed">
+                        {project.outcome}
+                      </p>
+                    </div>
+                    <div className="space-y-1.5">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-muted-2">
+                        My Engineering Contribution
+                      </div>
+                      <p className="text-ink font-medium text-xs sm:text-sm leading-relaxed">
+                        {project.contribution}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Technologies used */}
+                  <div className="pt-5 border-t border-line/60 flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="text-xs text-muted-2 font-semibold mr-1">
+                        Tech:
+                      </span>
+                      {project.tools.map((tool) => (
+                        <span key={tool} className="tag-pill bg-bg-soft border border-line text-muted text-[10px] sm:text-xs px-2.5 py-1 rounded">
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary text-xs !py-2.5 !px-4 flex items-center gap-1.5"
+                    >
+                      <span>Launch {project.domain}</span>
+                      <FiArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Right Side: Visual Mockup (5 columns on large screens) */}
+                <div className="lg:col-span-5 w-full h-full flex justify-center">
+                  <motion.div
+                    className="w-full relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[240px] rounded-xl overflow-hidden border border-line shadow-sm hover:shadow-lg bg-bg-soft"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <span>Launch {project.domain}</span>
-                    <FiArrowRight size={14} />
-                  </Link>
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} Screenshot Preview`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 400px"
+                      className="object-cover object-top hover:object-bottom transition-all duration-[4s] ease-in-out cursor-pointer"
+                    />
+                  </motion.div>
                 </div>
               </div>
             </Reveal>
