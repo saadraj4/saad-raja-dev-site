@@ -1,5 +1,9 @@
+"use client";
+
 import Reveal from "../../reveal";
 import { FiCode, FiServer, FiDatabase, FiCpu } from "react-icons/fi";
+import MagneticCard from "../../motion/magnetic-card";
+import { motion } from "framer-motion";
 
 const stackGroups = [
   {
@@ -30,9 +34,9 @@ const stackGroups = [
 
 function HowIDoIt() {
   return (
-    <section id="stack" className="py-24 border-t border-line bg-white">
+    <section id="stack" className="py-24 border-t border-line bg-white overflow-hidden">
       <div className="wrap">
-        <Reveal>
+        <Reveal direction="up" delay={0.1}>
           <div className="kicker">How I Actually Do It</div>
           <h2 className="sec-title">The stack behind the outcome</h2>
           <p className="sec-subtitle">
@@ -47,29 +51,50 @@ function HowIDoIt() {
             return (
               <Reveal
                 key={group.category}
-                delay={0.06 * (idx + 1)}
-                className="p-6 rounded-2xl border border-line bg-bg-soft/40 hover:bg-white hover:border-line hover:shadow-sm transition-all"
+                direction="scale"
+                delay={0.08 * (idx + 1)}
+                className="h-full"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-white border border-line text-ink">
-                    <Icon size={16} />
+                <MagneticCard
+                  intensity={4}
+                  className="p-6 rounded-2xl border border-line bg-bg-soft/40 hover:bg-white hover:border-line hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between group cursor-pointer"
+                >
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <motion.div 
+                        className="p-2 rounded-lg bg-white border border-line text-ink group-hover:text-accent group-hover:border-accent/30 transition-colors"
+                        whileHover={{ rotate: 15, scale: 1.1 }}
+                      >
+                        <Icon size={16} />
+                      </motion.div>
+                      <h3 className="text-base font-bold text-ink group-hover:text-accent transition-colors">
+                        {group.category}
+                      </h3>
+                    </div>
+
+                    <p className="text-xs text-muted leading-relaxed mb-4">
+                      {group.desc}
+                    </p>
                   </div>
-                  <h3 className="text-base font-bold text-ink">
-                    {group.category}
-                  </h3>
-                </div>
 
-                <p className="text-xs text-muted leading-relaxed mb-4">
-                  {group.desc}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((tech) => (
-                    <span key={tech} className="tech-pill">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {group.items.map((tech, tIdx) => (
+                      <motion.span
+                        key={tech}
+                        className="tech-pill cursor-pointer"
+                        whileHover={{
+                          scale: 1.05,
+                          y: -2,
+                          borderColor: "rgba(229, 64, 53, 0.4)",
+                          color: "var(--accent)"
+                        }}
+                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                </MagneticCard>
               </Reveal>
             );
           })}

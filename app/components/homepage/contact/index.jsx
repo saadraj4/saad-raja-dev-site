@@ -6,6 +6,7 @@ import { personalData } from "@/utils/data/personal-data";
 import Reveal from "../../reveal";
 import { FiMail, FiCopy, FiCheck, FiArrowRight } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -18,14 +19,20 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 border-t border-line bg-white">
+    <section id="contact" className="py-24 border-t border-line bg-white overflow-hidden">
       <div className="wrap">
-        <Reveal className="contact-hero">
+        <Reveal direction="scale" delay={0.1} className="contact-hero relative">
+          {/* Pulsing visual glow effect in background */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-30 blur-2xl -z-10 pointer-events-none" />
+          
           <div className="relative z-10 max-w-2xl mx-auto">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-wider mb-6">
+            <motion.span 
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-wider mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
               Ready When You Are
-            </span>
+            </motion.span>
 
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
               Have a product you need built or fixed?
@@ -38,26 +45,34 @@ function ContactSection() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href={`mailto:${personalData.email}?subject=Project%20Inquiry%20-%20Saad%20Raja`}
-                className="btn-primary !text-base !py-3.5 !px-7 w-full sm:w-auto justify-center"
+              <motion.div 
+                className="w-full sm:w-auto"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <FiMail size={18} />
-                <span>Email: {personalData.email}</span>
-                <FiArrowRight size={16} />
-              </Link>
+                <Link
+                  href={`mailto:${personalData.email}?subject=Project%20Inquiry%20-%20Saad%20Raja`}
+                  className="btn-primary !text-base !py-3.5 !px-7 w-full sm:w-auto justify-center group flex items-center gap-2"
+                >
+                  <FiMail size={18} />
+                  <span>Email: {personalData.email}</span>
+                  <FiArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
 
-              <button
+              <motion.button
                 onClick={handleCopyEmail}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-white/20 bg-white/10 text-white hover:bg-white/20 text-sm font-semibold transition-all w-full sm:w-auto cursor-pointer"
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+                whileTap={{ scale: 0.98 }}
               >
                 {copied ? <FiCheck size={16} className="text-green-400" /> : <FiCopy size={16} />}
                 <span>{copied ? "Copied to Clipboard!" : "Copy Email"}</span>
-              </button>
+              </motion.button>
             </div>
 
             <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-green-400" />
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span>Typically responds within 24 hours · Direct engineer contact</span>
             </div>
           </div>

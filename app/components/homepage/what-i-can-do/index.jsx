@@ -1,5 +1,9 @@
+"use client";
+
 import Reveal from "../../reveal";
 import { FiLayers, FiShield, FiTrendingUp, FiTool } from "react-icons/fi";
+import MagneticCard from "../../motion/magnetic-card";
+import { motion } from "framer-motion";
 
 const problems = [
   {
@@ -34,9 +38,9 @@ const problems = [
 
 function WhatICanDo() {
   return (
-    <section id="solve" className="py-24 border-t border-line bg-bg-soft/40">
+    <section id="solve" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
       <div className="wrap">
-        <Reveal>
+        <Reveal direction="up" delay={0.1}>
           <div className="kicker">What I Can Do For You</div>
           <h2 className="sec-title">Four problems I get hired to solve</h2>
           <p className="sec-subtitle">
@@ -51,30 +55,42 @@ function WhatICanDo() {
             return (
               <Reveal
                 key={item.num}
-                delay={0.08 * (idx + 1)}
-                className="problem-card flex flex-col justify-between group"
+                direction={idx % 2 === 0 ? "left" : "right"}
+                delay={0.1 * (idx + 1)}
+                className="h-full"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-2 uppercase tracking-wider">
-                      <span className="text-accent font-extrabold text-sm">
-                        {item.num}
+                <MagneticCard
+                  intensity={6}
+                  className="problem-card flex flex-col justify-between group h-full cursor-pointer overflow-hidden relative"
+                >
+                  {/* Subtle inner spotlight hover gradient */}
+                  <div className="absolute inset-0 bg-radial-spotlight opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10" />
+                  
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-2 uppercase tracking-wider">
+                        <span className="text-accent font-extrabold text-sm">
+                          {item.num}
+                        </span>
+                        <span>·</span>
+                        <span>{item.tag}</span>
                       </span>
-                      <span>·</span>
-                      <span>{item.tag}</span>
-                    </span>
-                    <div className="w-8 h-8 rounded-lg bg-bg-soft flex items-center justify-center text-muted group-hover:text-accent group-hover:bg-accent-tint transition-colors">
-                      <Icon size={15} />
+                      <motion.div 
+                        className="w-10 h-10 rounded-lg bg-bg-soft flex items-center justify-center text-muted group-hover:text-accent group-hover:bg-accent-tint transition-all"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      >
+                        <Icon size={16} />
+                      </motion.div>
                     </div>
-                  </div>
 
-                  <h3 className="text-xl font-bold text-ink tracking-tight mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted text-[14.5px] leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
+                    <h3 className="text-xl font-bold text-ink tracking-tight mb-3 group-hover:text-accent transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted text-[14.5px] leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </MagneticCard>
               </Reveal>
             );
           })}

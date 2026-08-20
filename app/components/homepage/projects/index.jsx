@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Reveal from "../../reveal";
-import { FiExternalLink, FiGithub, FiCheckCircle } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiArrowRight } from "react-icons/fi";
+import MagneticCard from "../../motion/magnetic-card";
+import { motion } from "framer-motion";
 
 const productionProjects = [
   {
@@ -76,9 +80,9 @@ const technicalProjects = [
 
 function WorkSection() {
   return (
-    <section id="work" className="py-24 border-t border-line bg-bg-soft/40">
+    <section id="work" className="py-24 border-t border-line bg-bg-soft/40 overflow-hidden">
       <div className="wrap">
-        <Reveal>
+        <Reveal direction="up" delay={0.1}>
           <div className="kicker">Selected Production Work</div>
           <h2 className="sec-title">Real products. Real clients. Real outcomes.</h2>
           <p className="sec-subtitle">
@@ -88,59 +92,65 @@ function WorkSection() {
         </Reveal>
 
         {/* Production Projects Showcase */}
-        <div className="mt-14 space-y-10">
+        <div className="mt-14 space-y-12">
           {productionProjects.map((project, idx) => (
             <Reveal
               key={project.name}
-              delay={0.08 * (idx + 1)}
-              className="showcase-card"
+              direction="up"
+              delay={0.12 * (idx + 1)}
+              className="showcase-card overflow-hidden group border border-line bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500"
             >
               {/* Browser mockup top bar */}
-              <div className="browser-header">
-                <div className="browser-dots">
-                  <span className="browser-dot" />
-                  <span className="browser-dot" />
-                  <span className="browser-dot" />
+              <div className="browser-header bg-bg-soft px-6 py-4 flex items-center justify-between border-b border-line">
+                <div className="browser-dots flex gap-2">
+                  <span className="browser-dot w-3 h-3 rounded-full bg-red-400/80" />
+                  <span className="browser-dot w-3 h-3 rounded-full bg-yellow-400/80" />
+                  <span className="browser-dot w-3 h-3 rounded-full bg-green-400/80" />
                 </div>
-                <div className="browser-address">https://{project.domain}</div>
-                <div className="flex items-center gap-1 text-[11px] font-semibold text-accent uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  Production
+                <div className="browser-address bg-white border border-line rounded px-4 py-1 text-xs text-muted font-mono tracking-wide max-w-xs truncate">
+                  https://{project.domain}
+                </div>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-accent uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
+                  Live Product
                 </div>
               </div>
 
               {/* Project Content Body */}
-              <div className="p-7 sm:p-9">
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-accent bg-accent-tint px-2.5 py-1 rounded border border-accent-border">
+              <div className="p-8 sm:p-10">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider text-accent bg-accent-tint px-3 py-1 rounded-full border border-accent-border">
                     {project.badge}
                   </span>
                   <Link
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-ink hover:text-accent transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors group/btn"
                   >
                     <span>Visit Live Website</span>
-                    <FiExternalLink size={13} />
+                    <FiExternalLink size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </Link>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight mb-4">
-                  {project.name} — {project.title}
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-ink tracking-tight mb-4 group-hover:text-accent transition-colors duration-300">
+                  {project.name}
                 </h3>
+                <h4 className="text-base sm:text-lg font-semibold text-muted mb-6 leading-relaxed">
+                  {project.title}
+                </h4>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 pt-5 border-t border-line">
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-muted-2 mb-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 pt-6 border-t border-line">
+                  <div className="space-y-2">
+                    <div className="text-xs font-bold uppercase tracking-wider text-muted-2">
                       The Business Problem &amp; Outcome
                     </div>
                     <p className="text-muted text-[14.5px] leading-relaxed">
                       {project.outcome}
                     </p>
                   </div>
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-muted-2 mb-2">
+                  <div className="space-y-2">
+                    <div className="text-xs font-bold uppercase tracking-wider text-muted-2">
                       My Engineering Contribution
                     </div>
                     <p className="text-ink font-medium text-[14.5px] leading-relaxed">
@@ -150,13 +160,13 @@ function WorkSection() {
                 </div>
 
                 {/* Technologies used */}
-                <div className="pt-4 border-t border-line/60 flex flex-wrap items-center justify-between gap-4">
+                <div className="pt-6 border-t border-line/60 flex flex-wrap items-center justify-between gap-4">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-xs text-muted-2 font-semibold mr-1">
                       Tech:
                     </span>
                     {project.tools.map((tool) => (
-                      <span key={tool} className="tag-pill">
+                      <span key={tool} className="tag-pill bg-bg-soft border border-line text-muted text-xs px-2.5 py-1 rounded">
                         {tool}
                       </span>
                     ))}
@@ -166,10 +176,10 @@ function WorkSection() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary text-xs !py-2.5 !px-4"
+                    className="btn-primary text-xs !py-3 !px-5 flex items-center gap-2"
                   >
-                    <span>Visit {project.domain}</span>
-                    <FiExternalLink size={13} />
+                    <span>Launch {project.domain}</span>
+                    <FiArrowRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -178,8 +188,8 @@ function WorkSection() {
         </div>
 
         {/* Technical & Open Source Systems */}
-        <div className="mt-20 pt-16 border-t border-line">
-          <Reveal>
+        <div className="mt-24 pt-16 border-t border-line">
+          <Reveal direction="up" delay={0.1}>
             <div className="kicker">Technical Projects &amp; Systems</div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
               Experiments that sharpen the engineering
@@ -194,54 +204,60 @@ function WorkSection() {
             {technicalProjects.map((item, idx) => (
               <Reveal
                 key={item.name}
-                delay={0.06 * (idx + 1)}
-                className="problem-card flex flex-col justify-between"
+                direction="scale"
+                delay={0.08 * (idx + 1)}
+                className="h-full"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-bold text-accent uppercase tracking-wider">
-                      {item.badge}
-                    </span>
+                <MagneticCard
+                  intensity={5}
+                  className="problem-card flex flex-col justify-between h-full bg-white border border-line rounded-xl p-6 hover:shadow-md cursor-pointer group"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-accent bg-accent-tint border border-accent-border px-2 py-0.5 rounded uppercase tracking-wider">
+                        {item.badge}
+                      </span>
+                      <Link
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted hover:text-ink transition-colors"
+                        title="View GitHub Repository"
+                      >
+                        <FiGithub size={18} />
+                      </Link>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-ink tracking-tight group-hover:text-accent transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-muted text-xs leading-relaxed">
+                      {item.outcome}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 mt-6 border-t border-line">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {item.tools.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[10px] bg-bg-soft border border-line text-muted px-2 py-0.5 rounded font-medium"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                     <Link
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted hover:text-ink transition-colors"
-                      title="View GitHub Repository"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors group/link"
                     >
-                      <FiGithub size={16} />
+                      <span>View Repository</span>
+                      <FiExternalLink size={13} className="group-hover/link:translate-x-0.5 transition-transform" />
                     </Link>
                   </div>
-
-                  <h3 className="text-lg font-bold text-ink tracking-tight mb-2">
-                    {item.name}
-                  </h3>
-                  <p className="text-muted text-xs leading-relaxed mb-4">
-                    {item.outcome}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-line">
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {item.tools.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[11px] bg-bg-soft text-muted px-2 py-0.5 rounded"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors"
-                  >
-                    <span>View Repository</span>
-                    <FiExternalLink size={12} />
-                  </Link>
-                </div>
+                </MagneticCard>
               </Reveal>
             ))}
           </div>
