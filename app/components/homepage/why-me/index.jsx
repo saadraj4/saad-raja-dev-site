@@ -142,9 +142,9 @@ function WhyMe() {
                       {item.others === false ? (
                         <motion.div
                           whileHover={{ scale: 1.2 }}
-                          className="w-6 h-6 rounded-full bg-red-500/20 border-2 border-red-500/50 flex items-center justify-center"
+                          className="w-6 h-6 rounded-full bg-error/20 border-2 border-error/50 flex items-center justify-center"
                         >
-                          <FiX className="text-red-400 w-4 h-4" />
+                          <FiX className="text-error w-4 h-4" />
                         </motion.div>
                       ) : (
                         <span className="text-xs text-white/60 font-semibold">{item.others}</span>
