@@ -1,40 +1,32 @@
-import { personalData } from "@/utils/data/personal-data";
-import AboutSection from "./components/homepage/about";
-import Blog from "./components/homepage/blog";
-import ContactSection from "./components/homepage/contact";
-import Education from "./components/homepage/education";
-import Experience from "./components/homepage/experience";
+import dynamic from "next/dynamic";
 import HeroSection from "./components/homepage/hero-section";
-import Projects from "./components/homepage/projects";
-import Skills from "./components/homepage/skills";
 
-async function getData() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-
-  const data = await res.json();
-
-  const filtered = data.filter((item) => item?.cover_image).sort(() => Math.random() - 0.5);
-
-  return filtered;
-};
-
-export default async function Home() {
-  const blogs = await getData();
-
+// Keep only the above-the-fold section as a static import.
+// Everything below gets code-split into its own chunk and
+const WhatICanDo = dynamic(() => import("./components/homepage/what-i-can-do"));
+const HowIDoIt = dynamic(() => import("./components/homepage/how-i-do-it"));
+const CodeShowcase = dynamic(() => import("./components/homepage/code-showcase"));
+const Testimonials = dynamic(() => import("./components/homepage/testimonials"));
+const WhyMe = dynamic(() => import("./components/homepage/why-me"));
+const WorkSection = dynamic(() => import("./components/homepage/projects"));
+const Experience = dynamic(() => import("./components/homepage/experience"));
+const Skills = dynamic(() => import("./components/homepage/skills"));
+const ContactSection = dynamic(() => import("./components/homepage/contact"));
+const LinkedInRecommendations = dynamic(() => import("./components/homepage/linkedin-recommendation"));
+export default function Home() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
-      <Education />
+      <WhatICanDo />
+      <HowIDoIt />
+      <CodeShowcase />
+      <Testimonials />
+      <WhyMe />
+      <WorkSection />
       <Experience />
+      {/* <LinkedInRecommendations /> */}
       <Skills />
-      <Projects />
-      {/*<Blog blogs={blogs} />*/}
       <ContactSection />
     </>
-  )
-};
+  );
+}
