@@ -4,7 +4,6 @@ import { isValidEmail } from '@/utils/check-email';
 import { useState, useTransition } from 'react';
 import { TbMailForward } from "react-icons/tb";
 import { toast } from 'react-toastify';
-import emailjs from 'emailjs-com';
 import { motion } from 'framer-motion';
 
 function ContactForm() {
@@ -33,29 +32,35 @@ function ContactForm() {
       setError({ ...error, required: false });
     }
 
-    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const options = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
     startTransition(async () => {
       try {
-        const res = await emailjs.send(serviceID, templateID, {
-          to_name: "Saad Raja",
-          from_name: userInput.name,
-          from_email: userInput.email,
-          message: userInput.message,
-        }, options);
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: userInput.name,
+            email: userInput.email,
+            message: userInput.message,
+          }),
+        });
+        console.log("response",response)
+        const data = await response.json();
         
-        if (res.status === 200) {
-          toast.success('Message sent successfully!');
+        if (response.ok && data.success) {
+          toast.success(data.message || 'Message sent successfully!');
           setUserInput({
             name: '',
             email: '',
             message: '',
           });
+        } else {
+          toast.error(data.message || 'Failed to send message');
         }
       } catch (err) {
-        toast.error(err?.text || err || "Failed to send email");
+        console.error('Send error:', err);
+        toast.error('Failed to send message. Please try again.');
       }
     });
   };
