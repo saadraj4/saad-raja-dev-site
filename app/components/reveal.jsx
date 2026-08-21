@@ -32,6 +32,7 @@ export default function Reveal({
   const getVariant = variantMap[direction] || fadeUp;
   const variant = getVariant(delay);
 
+  // Disable animations for users who prefer reduced motion
   if (prefersReducedMotion) {
     return <MotionComponent className={className}>{children}</MotionComponent>;
   }
@@ -43,7 +44,6 @@ export default function Reveal({
       initial="hidden"
       whileInView="show"
       viewport={viewportOnce}
-      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </MotionComponent>
