@@ -43,7 +43,7 @@ export default function Reveal({
       initial="hidden"
       whileInView="show"
       viewport={viewportOnce}
-      style={{ willChange: "transform, opacity, filter" }}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </MotionComponent>

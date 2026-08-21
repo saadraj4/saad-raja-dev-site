@@ -129,7 +129,7 @@ function CodeShowcase() {
               Production-grade code.<br />Not tutorials.
             </h2>
             <p className="sec-subtitle">
-              Here's what separates professional engineering from amateur work. This is the standard I hold myself to on every project.
+              Here&apos;s what separates professional engineering from amateur work. This is the standard I hold myself to on every project.
             </p>
           </div>
         </Reveal>

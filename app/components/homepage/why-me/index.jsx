@@ -84,7 +84,7 @@ function WhyMe() {
               Why work with me?
             </h2>
             <p className="text-lg text-white/70 leading-relaxed">
-              You're not hiring a developer. You're getting a technical co-founder for your project — someone who thinks about your business, not just the code.
+              You&apos;re not hiring a developer. You&apos;re getting a technical co-founder for your project — someone who thinks about your business, not just the code.
             </p>
           </div>
         </Reveal>
@@ -164,7 +164,7 @@ function WhyMe() {
               What actually sets me apart
             </h3>
             <p className="text-white/80 max-w-2xl mx-auto text-base">
-              It's not just about technical skills. Here's what you really get:
+              It&apos;s not just about technical skills. Here&apos;s what you really get:
             </p>
           </div>
         </Reveal>
@@ -223,7 +223,7 @@ function WhyMe() {
             className="mt-16 text-center bg-gradient-to-br from-[#1a1d2e] to-[#252837] backdrop-blur-md rounded-3xl p-10 border-2 border-white/30 shadow-2xl relative z-20"
           >
             <p className="text-white mb-6 max-w-xl mx-auto text-lg font-medium">
-              Still on the fence? Let's have a 15-minute call. I'll give you honest feedback on your project — even if it means I'm not the right fit.
+              Still on the fence? Let&apos;s have a 15-minute call. I&apos;ll give you honest feedback on your project — even if it means I&apos;m not the right fit.
             </p>
             <motion.a
               href="#contact"

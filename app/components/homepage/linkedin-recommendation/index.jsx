@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiLinkedin, FiStar, FiExternalLink } from "react-icons/fi";
 import { TbQuote } from "react-icons/tb";
+import Image from "next/image";
 
 const linkedinRecommendations = [
   {
@@ -116,9 +117,11 @@ function LinkedInRecommendations() {
                 {/* Author info */}
                 <div className="relative z-10 flex items-center gap-3 pt-4 border-t border-line/60">
                   {rec.avatar ? (
-                    <img
+                    <Image
                       src={rec.avatar}
                       alt={rec.author}
+                      width={40}
+                      height={40}
                       className="w-10 h-10 rounded-full object-cover border-2 border-line"
                     />
                   ) : (

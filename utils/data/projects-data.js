@@ -1,31 +1,33 @@
 export const productionProjects = [
   {
     badge: "Restaurant Web Experience",
-    name: "Oven N Grill",
-    domain: "ovenngrill.com",
-    title: "High-Performance Restaurant Web Platform & Digital Ordering Experience",
+    name: "Digital Food Platform",
+    domain: "Internal Corporate System (NDA)",
+    title: "High-Performance Digital Ordering & Food Commerce Experience",
     outcome:
       "Engineered a modern web presence for a restaurant brand to showcase menu offerings, improve local search visibility, and streamline customer discovery.",
     contribution:
       "Developed the responsive frontend interface using React and Vite, implemented dynamic menu displays, and integrated backend endpoints for order and customer engagement.",
-    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "REST APIs"],
-    link: "https://ovenngrill.com",
+    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "REST APIs", "Responsive Design", "Redux", "RTK-Query"],
+    link: "",
     isExternal: true,
-    image: "/image/oven-ngrill.jpg",
+    image: "",
+    isAnonymous: true,
   },
   {
-    badge: "Automotive Dealership (UK)",
-    name: "Mandeville Motors",
-    domain: "mandevillemotors.co.uk",
+    badge: "Automotive Dealership",
+    name: "Vehicle Search Engine",
+    domain: "Proprietary Corporate Platform (NDA)",
     title: "Automotive Vehicle Discovery & Lead Generation Platform",
     outcome:
       "Built a fast, search-optimized vehicle discovery platform for a UK-based motor dealership, facilitating vehicle catalog browsing and direct customer inquiries.",
     contribution:
       "Engineered the responsive vehicle catalog browsing experience, search and detail interfaces, and lead inquiry workflows with high mobile responsiveness.",
-    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "Responsive Design"],
-    link: "https://mandevillemotors.co.uk/",
+    tools: ["React", "Vite", "JavaScript", "Tailwind CSS", "Rest APIs", "Responsive Design", "RTK-Query"],
+    link: "",
     isExternal: true,
-    image: "/image/mandeville-motors.jpg",
+    image: "",
+    isAnonymous: true,
   },
   {
     badge: "Commercial B2B Marketplace",
@@ -40,6 +42,7 @@ export const productionProjects = [
     link: "https://www.cleanerscompare.com/",
     isExternal: true,
     image: "/image/cleaners-compare.jpg",
+    isAnonymous: false,
   },
 ];
 

@@ -38,23 +38,21 @@ export const fadeRight = (delay = 0, distance = 50) => ({
   },
 });
 
-// Scale up with blur
+// Scale up (optimized, no expensive CSS blur filter)
 export const scaleUp = (delay = 0) => ({
-  hidden: { opacity: 0, scale: 0.85, filter: "blur(10px)" },
+  hidden: { opacity: 0, scale: 0.85 },
   show: {
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
     transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
   },
 });
 
-// Blur in only (no movement)
+// Blur in only (optimized to clean fade-in to bypass expensive GPU blurs)
 export const blurIn = (delay = 0) => ({
-  hidden: { opacity: 0, filter: "blur(12px)" },
+  hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    filter: "blur(0px)",
     transition: { duration: 0.8, delay, ease: "easeOut" },
   },
 });
@@ -91,11 +89,10 @@ export const textContainer = (stagger = 0.02) => ({
 
 // Character-level text animation variant (child)
 export const textChar = {
-  hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };

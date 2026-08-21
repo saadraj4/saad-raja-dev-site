@@ -20,27 +20,22 @@ export default function AnimatedText({
   const words = text.split(" ");
 
   return (
-    <Tag className={className} aria-label={text}>
+    <Tag
+      className={className}
+      aria-label={text}
+      variants={textContainer(0.08)}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+    >
       {words.map((word, wi) => (
         <motion.span
           key={wi}
           className="inline-block"
-          variants={textContainer(0.025)}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          style={{ marginRight: "0.3em" }}
+          variants={textChar}
+          style={{ marginRight: "0.25em", willChange: "transform, opacity" }}
         >
-          {word.split("").map((char, ci) => (
-            <motion.span
-              key={ci}
-              className="inline-block"
-              variants={textChar}
-              style={{ willChange: "transform, opacity, filter" }}
-            >
-              {char}
-            </motion.span>
-          ))}
+          {word}
         </motion.span>
       ))}
     </Tag>

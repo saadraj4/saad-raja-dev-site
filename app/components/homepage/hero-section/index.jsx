@@ -41,34 +41,16 @@ function HeroSection() {
 
   return (
     <header className="relative pt-26 pb-5 md:pt-28 md:pb-10 overflow-hidden">
-      {/* Animated gradient orbs - optimized */}
-      <motion.div
+      {/* Optimized static gradient orbs */}
+      <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-accent/5 -z-10 pointer-events-none rounded-full"
-        style={{ filter: "blur(100px)", willChange: "transform" }}
+        style={{ filter: "blur(100px)", opacity: 0.6 }}
         aria-hidden="true"
-        animate={
-          reduced
-            ? {}
-            : {
-                scale: [1, 1.1, 1],
-                opacity: [0.5, 0.7, 0.5],
-              }
-        }
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         className="absolute top-[60%] right-0 w-[400px] h-[400px] bg-accent/3 -z-10 pointer-events-none rounded-full"
-        style={{ filter: "blur(80px)", willChange: "transform" }}
+        style={{ filter: "blur(80px)", opacity: 0.5 }}
         aria-hidden="true"
-        animate={
-          reduced
-            ? {}
-            : {
-                x: [0, 20, 0],
-                scale: [1, 1.05, 1],
-              }
-        }
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Floating particles */}

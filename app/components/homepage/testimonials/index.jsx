@@ -41,8 +41,7 @@ const achievements = [
 
 const stats = [
   { id: 1, value: "100%", label: "Job Success Score" },
-  { id: 2, value: "0", label: "Failed Projects" },
-  { id: 3, value: "<24h", label: "Typical Response" },
+  { id: 2, value: "<24h", label: "Typical Response" },
 ];
 
 function Testimonials() {

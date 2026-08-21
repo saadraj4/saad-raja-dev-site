@@ -2,10 +2,68 @@
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "../../reveal";
-import { FiExternalLink, FiGithub, FiArrowRight } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiArrowRight, FiLock } from "react-icons/fi";
 import MagneticCard from "../../motion/magnetic-card";
 import { motion } from "framer-motion";
-import { productionProjects, technicalProjects } from "../../../../utils/data/projects-data"
+import { productionProjects, technicalProjects } from "../../../../utils/data/projects-data";
+
+function AbstractProjectGraphic({ name, tools }) {
+  return (
+    <div className="w-full relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[240px] rounded-xl overflow-hidden border-2 border-[#3a3556] bg-gradient-to-br from-[#1a1633] via-[#201838] to-[#1a1633] p-6 flex flex-col justify-between select-none shadow-2xl group">
+      {/* Enhanced background with stronger glow */}
+      <div className="absolute inset-0 opacity-[0.08] bg-grid-pattern pointer-events-none" />
+      <div className="absolute -top-10 -right-10 w-48 h-48 bg-violet-500/15 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+      
+      {/* Top Header - More prominent */}
+      <div className="flex items-center justify-between border-b border-violet-500/30 pb-3 relative z-10">
+        <div className="flex items-center gap-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-lg shadow-cyan-400/50" />
+          <span className="text-xs font-mono text-gray-300 uppercase tracking-wider font-semibold">System Monitor</span>
+        </div>
+        <div className="flex gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-violet-400/30 hover:bg-violet-400/60 transition-colors cursor-pointer" />
+          <span className="w-2 h-2 rounded-full bg-violet-400/30 hover:bg-violet-400/60 transition-colors cursor-pointer" />
+          <span className="w-2 h-2 rounded-full bg-violet-400/30 hover:bg-violet-400/60 transition-colors cursor-pointer" />
+        </div>
+      </div>
+
+      {/* Main Content Area: Enhanced Mock Dashboard/Metrics */}
+      <div className="grid grid-cols-3 gap-3 my-auto relative z-10">
+        <div className="bg-[#0f0e1a]/80 backdrop-blur-sm border-2 border-green-500/30 rounded-lg p-2.5 sm:p-3 flex flex-col justify-between hover:border-green-400/50 hover:bg-[#0f0e1a] transition-all group/card shadow-lg">
+          <span className="text-[9px] sm:text-[10px] text-gray-400 font-semibold uppercase tracking-tight leading-tight">Performance</span>
+          <span className="text-sm sm:text-base font-black tracking-tight mt-1.5 font-mono text-green-400 group-hover/card:text-green-300 transition-colors">99.9%</span>
+        </div>
+        
+        <div className="bg-[#0f0e1a]/80 backdrop-blur-sm border-2 border-blue-500/30 rounded-lg p-2.5 sm:p-3 flex flex-col justify-between hover:border-blue-400/50 hover:bg-[#0f0e1a] transition-all group/card shadow-lg">
+          <span className="text-[9px] sm:text-[10px] text-gray-400 font-semibold uppercase tracking-tight leading-tight">API Service</span>
+          <span className="text-sm sm:text-base font-black tracking-tight mt-1.5 font-mono text-blue-400 group-hover/card:text-blue-300 transition-colors">Active</span>
+        </div>
+
+        <div className="bg-[#0f0e1a]/80 backdrop-blur-sm border-2 border-cyan-500/30 rounded-lg p-2.5 sm:p-3 flex flex-col justify-between hover:border-cyan-400/50 hover:bg-[#0f0e1a] transition-all group/card shadow-lg">
+          <span className="text-[9px] sm:text-[10px] text-gray-400 font-semibold uppercase tracking-tight leading-tight">Latency</span>
+          <span className="text-sm sm:text-base font-black tracking-tight mt-1.5 font-mono text-cyan-400 group-hover/card:text-cyan-300 transition-colors">32ms</span>
+        </div>
+      </div>
+
+      {/* Enhanced Architecture nodes diagram */}
+      <div className="flex items-center justify-between gap-2 px-2 pt-3 border-t border-violet-500/20 relative z-10">
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="w-6 h-6 rounded bg-blue-500/20 border-2 border-blue-400/50 flex items-center justify-center text-[9px] text-blue-300 font-bold shadow-lg hover:bg-blue-500/30 transition-all">API</div>
+          <span className="h-[2px] w-6 bg-gradient-to-r from-blue-400/50 via-violet-400/50 to-cyan-400/50" />
+          <div className="w-6 h-6 rounded bg-cyan-500/20 border-2 border-cyan-400/50 flex items-center justify-center text-[9px] text-cyan-300 font-bold shadow-lg hover:bg-cyan-500/30 transition-all">DB</div>
+        </div>
+        <div className="flex gap-1 flex-wrap justify-end min-w-0">
+          {tools.slice(0, 3).map((t) => (
+            <span key={t} className="text-[8px] sm:text-[9px] bg-violet-500/10 border border-violet-400/30 text-gray-300 px-1.5 py-0.5 rounded font-semibold shadow-sm hover:bg-violet-500/20 transition-colors whitespace-nowrap">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function WorkSection() {
   return (
@@ -50,11 +108,25 @@ function WorkSection() {
                   />
                 </div>
                 <div className="browser-address bg-white border border-line rounded px-4 py-1 text-xs text-muted font-mono tracking-wide max-w-xs truncate">
-                  https://{project.domain}
+                  {project.isAnonymous ? (
+                    <span className="flex items-center gap-1 text-muted-2">
+                      <FiLock className="shrink-0" size={11} /> {project.domain}
+                    </span>
+                  ) : (
+                    `https://${project.domain}`
+                  )}
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-bold text-accent uppercase tracking-wider">
-                  <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
-                  Live Product
+                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider">
+                  {project.isAnonymous ? (
+                    <span className="text-orange-500 font-bold flex items-center gap-1">
+                      🔒 Protected
+                    </span>
+                  ) : (
+                    <>
+                      <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
+                      <span className="text-accent">Live Product</span>
+                    </>
+                  )}
                 </div>
               </div>
 
@@ -66,15 +138,21 @@ function WorkSection() {
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-accent bg-accent-tint px-3 py-1 rounded-full border border-accent-border">
                       {project.badge}
                     </span>
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors group/btn"
-                    >
-                      <span>Visit Live Website</span>
-                      <FiExternalLink size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                    </Link>
+                    {!project.isAnonymous ? (
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-bold text-ink hover:text-accent transition-colors group/btn"
+                      >
+                        <span>Visit Live Website</span>
+                        <FiExternalLink size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                      </Link>
+                    ) : (
+                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted bg-muted/10 border border-line px-2.5 py-1 rounded flex items-center gap-1 shadow-sm">
+                        <FiLock size={12} className="text-accent" /> Internal Core NDA
+                      </span>
+                    )}
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
@@ -116,33 +194,39 @@ function WorkSection() {
                       ))}
                     </div>
 
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary text-xs !py-2.5 !px-4 flex items-center gap-1.5"
-                    >
-                      <span>Launch {project.domain}</span>
-                      <FiArrowRight size={14} />
-                    </Link>
+                    {!project.isAnonymous && (
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary text-xs !py-2.5 !px-4 flex items-center gap-1.5"
+                      >
+                        <span>Launch {project.domain}</span>
+                        <FiArrowRight size={14} />
+                      </Link>
+                    )}
                   </div>
                 </div>
 
                 {/* Right Side: Visual Mockup (5 columns on large screens) */}
                 <div className="lg:col-span-5 w-full h-full flex justify-center">
-                  <motion.div
-                    className="w-full relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[240px] rounded-xl overflow-hidden border border-line shadow-sm hover:shadow-lg bg-bg-soft"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={`${project.name} Screenshot Preview`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 400px"
-                      className="object-cover object-top hover:object-bottom transition-all duration-[4s] ease-in-out cursor-pointer"
-                    />
-                  </motion.div>
+                  {project.isAnonymous ? (
+                    <AbstractProjectGraphic name={project.name} tools={project.tools} />
+                  ) : (
+                    <motion.div
+                      className="w-full relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[240px] rounded-xl overflow-hidden border border-line shadow-sm hover:shadow-lg bg-bg-soft"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} Screenshot Preview`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 400px"
+                        className="object-cover object-top hover:object-bottom transition-all duration-[4s] ease-in-out cursor-pointer"
+                      />
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </Reveal>
