@@ -57,14 +57,24 @@ export const technicalProjects = [
     link: "https://github.com/saadraj4/fyp-bookit",
   },
   {
-    badge: "Machine Learning",
-    name: "Telecom Churn Prediction",
-    title: "Predictive Subscriber Churn Modeling & Risk Factor Identification",
+    badge: "Data Engineering",
+    name: "Reddit Scraper",
+    title: "Automated Reddit Data Collection & Analysis Pipeline",
     outcome:
-      "Built predictive machine learning models to surface high-risk customer churn indicators, enabling data-backed retention intervention.",
-    tools: ["Python", "scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
-    link: "https://github.com/saadraj4/Analysis-of-telecom-Customer-Churn",
+      "Built a Python-based web scraper to extract and analyze Reddit posts, comments, and user activity for sentiment analysis and trend detection.",
+    tools: ["Python", "PRAW", "Pandas", "Beautiful Soup", "API Integration"],
+    link: "https://github.com/saadraj4/Reddit_Scrapper",
   },
+  {
+    badge: "Quantitative Finance",
+    name: "Pair Trading System",
+    title: "Statistical Arbitrage Trading Strategy & Backtesting Framework",
+    outcome:
+      "Developed a pairs trading algorithm to identify cointegrated stock pairs and execute mean-reversion trades, delivered as a freelance quantitative finance project.",
+    tools: ["Python", "Pandas", "NumPy", "Statistics", "Financial Analysis"],
+    link: "https://github.com/saadraj4/Pair-Trading",
+  },
+ 
   {
     badge: "Signal Processing",
     name: "Sensor Motion Analysis",
@@ -73,5 +83,14 @@ export const technicalProjects = [
       "Processed raw accelerometer and gyroscope sensor telemetry into smoothed motion events and real-time velocity metrics.",
     tools: ["Python", "NumPy", "Kalman Filter", "Pandas"],
     link: "https://github.com/saadraj4/Motion_Analysis_using_Accelerometer_and_Gyroscope_Data",
+  },
+   {
+    badge: "Machine Learning",
+    name: "Telecom Churn Prediction",
+    title: "Predictive Subscriber Churn Modeling & Risk Factor Identification",
+    outcome:
+      "Built predictive machine learning models to surface high-risk customer churn indicators, enabling data-backed retention intervention.",
+    tools: ["Python", "scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
+    link: "https://github.com/saadraj4/Analysis-of-telecom-Customer-Churn",
   },
 ];

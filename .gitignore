@@ -1,36 +1,33 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Jupyter Notebook
+.ipynb_checkpoints/
 
-# testing
-/coverage
+# Virtual environments
+venv/
+env/
+.env/
 
-# next.js
-/.next/
-/out/
+# IDE
+.vscode/
+.idea/
 
-# production
-/build
-
-# misc
+# OS
 .DS_Store
-*.pem
+Thumbs.db
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-.env
-
-# vercel
-.vercel
-
+# Data files (large CSVs)
+# Uncomment the line below if you don't want to track large data files
+# *.csv
+node_modules
+.next
 # typescript
 *.tsbuildinfo
 next-env.d.ts
