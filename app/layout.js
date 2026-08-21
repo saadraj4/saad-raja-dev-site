@@ -32,6 +32,24 @@ export const metadata = {
     description:
       "I build and ship production web applications end to end.",
   },
+  title: "Saad Raja — Full Stack Developer · Production Web Applications",
+  description:
+    "Full stack developer specializing in React, Next.js, and Node.js. I build and ship production web applications end to end — from idea to live product. UAE & Pakistan client experience.",
+  openGraph: {
+    title: "Saad Raja — Full Stack Developer",
+    description:
+      "I build and ship production web applications end to end. React, Next.js, Node.js, and more.",
+    url: "https://saad-raja-dev-site.vercel.app",
+    siteName: "Saad Raja",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saad Raja — Full Stack Developer",
+    description:
+      "I build and ship production web applications end to end.",
+  },
 };
 
 export default function RootLayout({ children }) {

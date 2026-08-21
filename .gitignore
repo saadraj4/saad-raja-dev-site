@@ -28,3 +28,4 @@ Thumbs.db
 # *.csv
 node_modules
 .next
+/.vscode
