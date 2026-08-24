@@ -93,6 +93,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  min-height: 100vh;
 }
 
 body::before {
@@ -120,12 +121,18 @@ a {
 .wrap {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 20px;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
   .wrap {
-    padding: 0 20px;
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    padding: 0 32px;
   }
 }
 
@@ -153,20 +160,22 @@ a {
   border-bottom: 1px solid var(--primary-border);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.2s ease;
+  backdrop-filter: blur(10px);
 }
 
 .nav-container {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 16px 32px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
   .nav-container {
-    padding: 14px 20px;
+    padding: 16px 32px;
   }
 }
 
@@ -227,14 +236,23 @@ a {
 .nav-btn {
   background: var(--ink);
   color: #fff;
-  padding: 8px 18px;
+  padding: 7px 14px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .nav-btn {
+    padding: 8px 18px;
+    font-size: 13px;
+    gap: 6px;
+  }
 }
 
 .nav-btn:hover {
@@ -261,15 +279,15 @@ a {
 }
 
 .sec-title {
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--ink);
 }
 
 .sec-subtitle {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   line-height: 1.65;
   color: var(--muted);
   max-width: 580px;
@@ -280,11 +298,12 @@ a {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 14px 28px;
+  padding: 12px 20px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   color: #FFFFFF;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   border-radius: 12px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -295,6 +314,13 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .btn-primary {
+    padding: 14px 28px;
+    font-size: 14.5px;
+  }
 }
 
 .btn-primary::before {
@@ -327,17 +353,25 @@ a {
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 14px 26px;
+  padding: 12px 20px;
   background: #FFFFFF;
   color: var(--ink);
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   border-radius: 12px;
   border: 1.5px solid var(--primary-border);
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+@media (min-width: 640px) {
+  .btn-secondary {
+    padding: 14px 26px;
+    font-size: 14.5px;
+  }
 }
 
 .btn-secondary:hover {
@@ -356,11 +390,17 @@ a {
   background: #FFFFFF;
   border: 1px solid rgba(37, 99, 235, 0.15);
   border-radius: 16px;
-  padding: 32px;
+  padding: 24px;
   transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+  .problem-card {
+    padding: 32px;
+  }
 }
 
 .problem-card::before {
@@ -579,11 +619,18 @@ a {
   color: #FFFFFF;
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
-  padding: 72px 40px;
+  border-radius: 20px;
+  padding: 48px 24px;
   text-align: center;
   border: 1px solid rgba(37, 99, 235, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 640px) {
+  .contact-hero {
+    border-radius: 28px;
+    padding: 72px 40px;
+  }
 }
 
 .contact-hero::before {
@@ -664,6 +711,17 @@ a {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(37, 99, 235, 0.12);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive section spacing */
+section {
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 70px;
+  }
 }
 
 /* Floating animation - Reduced intensity */

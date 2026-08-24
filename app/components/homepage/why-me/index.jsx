@@ -100,15 +100,15 @@ function WhyMe() {
               style={{ background: "rgba(255, 255, 255, 0.05)" }}
             >
               {/* Table header */}
-              <div className="grid grid-cols-3 gap-4 p-6 border-b border-white/10 bg-white/5">
-                <div className="text-sm font-bold text-white/50"></div>
+              <div className="grid grid-cols-[2fr_1fr_1fr] sm:grid-cols-3 gap-2 sm:gap-4 p-4 sm:p-6 border-b border-white/10 bg-white/5">
+                <div className="text-xs sm:text-sm font-bold text-white/50"></div>
                 <div className="text-center">
-                  <div className="text-lg font-extrabold text-white">Working With Me</div>
-                  <div className="text-xs text-green-400 font-semibold mt-1">✓ Full Stack Engineer</div>
+                  <div className="text-sm sm:text-lg font-extrabold text-white">Me</div>
+                  <div className="text-[10px] sm:text-xs text-green-400 font-semibold mt-1 hidden sm:block">✓ Full Stack</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-extrabold text-white/60">Most Developers</div>
-                  <div className="text-xs text-white/40 mt-1">Generic freelancers</div>
+                  <div className="text-sm sm:text-lg font-extrabold text-white/60">Others</div>
+                  <div className="text-[10px] sm:text-xs text-white/40 mt-1 hidden sm:block">Generic</div>
                 </div>
               </div>
 
@@ -121,18 +121,18 @@ function WhyMe() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.05 * idx }}
-                    className="grid grid-cols-3 gap-4 p-4 hover:bg-white/5 transition-colors"
+                    className="grid grid-cols-[2fr_1fr_1fr] sm:grid-cols-3 gap-2 sm:gap-4 p-3 sm:p-4 hover:bg-white/5 transition-colors"
                   >
-                    <div className="text-sm text-white/80 font-medium flex items-center">
+                    <div className="text-xs sm:text-sm text-white/80 font-medium flex items-center">
                       {item.label}
                     </div>
                     <div className="flex justify-center items-center">
                       {item.you === true ? (
                         <motion.div
                           whileHover={{ scale: 1.2, rotate: 360 }}
-                          className="w-6 h-6 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center"
+                          className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center"
                         >
-                          <FiCheck className="text-green-400 w-4 h-4" />
+                          <FiCheck className="text-green-400 w-3 h-3 sm:w-4 sm:h-4" />
                         </motion.div>
                       ) : (
                         <span className="text-xs text-white/60 font-semibold">{item.you}</span>
@@ -142,9 +142,9 @@ function WhyMe() {
                       {item.others === false ? (
                         <motion.div
                           whileHover={{ scale: 1.2 }}
-                          className="w-6 h-6 rounded-full bg-error/20 border-2 border-error/50 flex items-center justify-center"
+                          className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-error/20 border-2 border-error/50 flex items-center justify-center"
                         >
-                          <FiX className="text-error w-4 h-4" />
+                          <FiX className="text-error w-3 h-3 sm:w-4 sm:h-4" />
                         </motion.div>
                       ) : (
                         <span className="text-xs text-white/60 font-semibold">{item.others}</span>
