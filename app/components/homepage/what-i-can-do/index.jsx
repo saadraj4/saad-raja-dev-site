@@ -38,7 +38,7 @@ const problems = [
 
 function WhatICanDo() {
   return (
-    <section id="solve" className="py-12 border-t border-line bg-bg-soft/20 overflow-hidden">
+    <section id="solve" className="py-12 md:py-16 border-t border-line bg-bg-soft/20 overflow-hidden">
       <div className="wrap">
         <Reveal direction="up" delay={0.1}>
           <div className="kicker">What I Can Do For You</div>
@@ -49,7 +49,7 @@ function WhatICanDo() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {problems.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -67,26 +67,27 @@ function WhatICanDo() {
                   <div className="absolute inset-0 bg-radial-spotlight opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10" />
                   
                   <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-2 uppercase tracking-wider">
-                        <span className="text-accent font-extrabold text-sm">
+                    <div className="flex items-center justify-between mb-3 md:mb-5">
+                      <span className="inline-flex items-center gap-1 md:gap-1.5 text-[10px] md:text-xs font-bold text-muted-2 uppercase tracking-wider">
+                        <span className="text-accent font-extrabold text-xs md:text-sm">
                           {item.num}
                         </span>
                         <span>·</span>
                         <span>{item.tag}</span>
                       </span>
                       <motion.div 
-                        className="w-10 h-10 rounded-lg bg-bg-soft flex items-center justify-center text-muted group-hover:text-accent group-hover:bg-accent-tint transition-all"
+                        className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-bg-soft flex items-center justify-center text-muted group-hover:text-accent group-hover:bg-accent-tint transition-all"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
-                        <Icon size={16} />
+                        <Icon size={14} className="md:hidden" />
+                        <Icon size={16} className="hidden md:block" />
                       </motion.div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-ink tracking-tight mb-3 group-hover:text-accent transition-colors duration-300">
+                    <h3 className="text-base md:text-xl font-bold text-ink tracking-tight mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300 leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-muted text-[14.5px] leading-relaxed">
+                    <p className="text-muted text-sm md:text-[14.5px] leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
