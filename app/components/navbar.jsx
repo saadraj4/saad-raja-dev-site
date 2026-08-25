@@ -8,9 +8,9 @@ function Navbar() {
   return (
     <nav className="site-nav shadow-sm">
       <div className="nav-container">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link href="/" className="nav-logo group">
-            <span className="font-extrabold text-[17px] tracking-tight relative">
+            <span className="font-extrabold text-[15px] sm:text-[17px] tracking-tight relative whitespace-nowrap">
               Saad Raja
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
             </span>
@@ -18,7 +18,8 @@ function Navbar() {
           <div className="hidden sm:flex items-center">
             <span className="status-badge">
               <span className="status-dot"></span>
-              Available for new projects
+              <span className="hidden md:inline">Available for new projects</span>
+              <span className="md:hidden">Available</span>
             </span>
           </div>
         </div>
@@ -42,18 +43,19 @@ function Navbar() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href={personalData.resume}
             target="_blank"
             download
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-lg border border-line hover:border-accent hover:text-accent transition-all hover:shadow-sm bg-white/80 backdrop-blur-sm"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg border border-line hover:border-accent hover:text-accent transition-all hover:shadow-sm bg-white/80 backdrop-blur-sm whitespace-nowrap"
           >
             <FiDownload size={13} />
-            <span>Resume</span>
+            <span className="hidden md:inline">Resume</span>
           </Link>
           <Link href="#contact" className="nav-btn">
-            <span>Get in Touch</span>
+            <span className="hidden xs:inline">Get in Touch</span>
+            <span className="xs:hidden">Contact</span>
             <FiArrowUpRight size={14} />
           </Link>
         </div>

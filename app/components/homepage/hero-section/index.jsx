@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import AnimatedText from "../../motion/animated-text";
 import AnimatedCounter from "../../motion/animated-counter";
@@ -9,10 +9,7 @@ import {
   staggerContainer,
   fadeUp,
   fadeLeft,
-  fadeRight,
-  scaleUp,
   popIn,
-  viewportOnce,
 } from "../../motion/variants";
 
 const metrics = [
@@ -26,21 +23,19 @@ const metrics = [
     value: 10,
     suffix: "+",
     label: "Projects Delivered",
-    sub: "UAE, UK & Pakistan clients",
+    sub: "International clients",
   },
   {
     value: 100,
     suffix: "%",
     label: "Full-Stack Ownership",
-    sub: "Blank repo to deployed architecture",
+    sub: "Idea to live product",
   },
 ];
 
 function HeroSection() {
-  const reduced = useReducedMotion();
-
   return (
-    <header className="relative pt-26 pb-5 md:pt-28 md:pb-10 overflow-hidden">
+    <header className="relative pt-24 pb-8 md:pt-32 lg:pt-40 md:pb-10 overflow-hidden">
       {/* Optimized static gradient orbs */}
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-accent/5 -z-10 pointer-events-none rounded-full"
@@ -93,7 +88,7 @@ function HeroSection() {
           {/* Title — character-by-character reveal with enhanced styling */}
           <motion.h1
             variants={fadeUp(0.05)}
-            className="text-4xl sm:text-6xl lg:text-[4.2rem] font-extrabold leading-[1.08] tracking-tight text-ink max-w-[860px] relative"
+            className="text-[2rem] sm:text-5xl lg:text-[4.2rem] font-extrabold leading-[1.15] tracking-tight text-ink max-w-[860px] relative"
           >
             <AnimatedText text="You bring the problem." />
             <br />
@@ -128,7 +123,7 @@ function HeroSection() {
           {/* Subtitle — slides from left */}
           <motion.p
             variants={fadeLeft(0.3)}
-            className="text-lg sm:text-xl leading-relaxed text-muted max-w-[620px] mt-7 font-normal"
+            className="text-base sm:text-lg md:text-xl leading-relaxed text-muted max-w-[620px] mt-5 sm:mt-7 font-normal"
           >
             I build and ship web applications end to end — no half-finished
             handoffs, no &ldquo;it works on my machine.&rdquo; You describe what
@@ -138,10 +133,11 @@ function HeroSection() {
           {/* CTA buttons with stagger */}
           <motion.div
             variants={fadeUp(0.45)}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            className="mt-7 sm:mt-9 flex flex-row flex-wrap items-center gap-3 sm:gap-4"
           >
-            <Link href="#contact" className="btn-primary group">
-              <span>Tell me about your project</span>
+            <Link href="#contact" className="btn-primary group justify-center">
+              <span className="hidden sm:inline">Tell me about your project</span>
+              <span className="sm:hidden">Start Project</span>
               <motion.span
                 className="inline-block"
                 whileHover={{ x: 4 }}
@@ -150,8 +146,9 @@ function HeroSection() {
                 <FiArrowRight size={16} />
               </motion.span>
             </Link>
-            <Link href="#work" className="btn-secondary group">
-              <span>See what I&apos;ve built</span>
+            <Link href="#work" className="btn-secondary group justify-center">
+              <span className="hidden sm:inline">See what I&apos;ve built</span>
+              <span className="sm:hidden">View Work</span>
             </Link>
           </motion.div>
         </motion.div>
@@ -161,40 +158,41 @@ function HeroSection() {
           className="mt-10 pt-5 border-t border-line relative"
           variants={staggerContainer(0.1, 0.6)}
           initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
+          animate="show"
         >
           {/* Trust badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="mb-3 flex items-center gap-6 flex-wrap"
+            className="mb-4 flex flex-col sm:flex-row sm:items-center items-start gap-2 sm:gap-6 text-sm sm:text-base"
           >
-            <div className="flex items-center gap-2 text-xs text-muted">
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 bg-green-500 rounded-full"
-              />
+            <div className="flex items-center gap-2 text-muted">
+              <div className="w-5 flex items-center justify-center flex-shrink-0">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-2 h-2 bg-green-500 rounded-full"
+                />
+              </div>
               <span className="font-semibold">Available for new projects</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-muted">
-              <span className="text-lg">⚡</span>
-              <span>Avg. response time: <span className="font-bold text-ink">2 hours</span></span>
+            <div className="flex items-center gap-2 text-muted">
+              <span className="text-lg sm:text-xl flex-shrink-0 w-5 flex items-center justify-center">⚡</span>
+              <span className="whitespace-nowrap">Avg. response: <span className="font-bold text-ink">2 hours</span></span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-muted">
-              <span className="text-lg">🌍</span>
-              <span>Remote-ready · <span className="font-bold text-ink">UTC+5</span></span>
+            <div className="flex items-center gap-2 text-muted">
+              <span className="text-lg sm:text-xl flex-shrink-0 w-5 flex items-center justify-center">🌍</span>
+              <span className="whitespace-nowrap">Remote-ready · <span className="font-bold text-ink">UTC+5</span></span>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {metrics.map((m, i) => (
+          <div className="grid grid-cols-3 gap-2 sm:gap-6">
+            {metrics.map((m, idx) => (
               <motion.div
                 key={m.label}
                 variants={fadeUp(0)}
-                className="metric-card flex items-start gap-3.5 p-4 rounded-xl bg-bg-soft/60 border border-line/60 group relative overflow-hidden"
+                className="metric-card flex flex-col items-center sm:items-start sm:flex-row gap-1 sm:gap-3.5 p-2 sm:p-4 rounded-lg sm:rounded-xl bg-bg-soft/60 border border-line/60 group relative overflow-hidden"
                 whileHover={{ y: -3, borderColor: "rgba(229,64,53,0.25)" }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -205,18 +203,23 @@ function HeroSection() {
                 />
                 
                 <motion.div
-                  className="p-2 rounded-lg bg-accent/10 text-accent mt-0.5 relative z-10"
+                  className="hidden sm:flex p-1.5 sm:p-2 rounded-lg bg-accent/10 text-accent mt-0.5 relative z-10 flex-shrink-0"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
                   <FiCheckCircle size={16} />
                 </motion.div>
-                <div className="relative z-10">
-                  <div className="text-2xl font-extrabold text-ink tracking-tight">
-                    <AnimatedCounter value={m.value} suffix={m.suffix} />
-                  </div>
-                  <div className="text-sm font-bold text-ink">{m.label}</div>
-                  <div className="text-xs text-muted mt-0.5">{m.sub}</div>
+                <div className="relative z-10 min-w-0 text-center sm:text-left">
+                  <motion.div 
+                    className="text-xl sm:text-2xl font-extrabold text-ink tracking-tight"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + (idx * 0.1), type: "spring", stiffness: 200 }}
+                  >
+                    <AnimatedCounter value={m.value} suffix={m.suffix} immediate={true} />
+                  </motion.div>
+                  <div className="text-[10px] sm:text-sm font-bold text-ink leading-tight">{m.label}</div>
+                  <div className="hidden sm:block text-xs text-muted mt-0.5 break-words leading-tight">{m.sub}</div>
                 </div>
               </motion.div>
             ))}

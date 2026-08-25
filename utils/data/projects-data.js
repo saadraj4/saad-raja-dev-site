@@ -1,5 +1,20 @@
 export const productionProjects = [
   {
+    badge: "Commercial B2B Marketplace",
+    name: "CleanersCompare",
+    domain: "cleanerscompare.com",
+    title: "B2B Comparison Marketplace for Laundry & Dry Cleaning Industry",
+    outcome:
+      "Developed a dedicated commercial marketplace connecting laundry businesses with suppliers for new/used equipment, spare parts, and specialized engineering services.",
+    contribution:
+      "Contributed to the Next.js full-stack platform, implementing product catalog filtering, supplier product showcase flows, and SEO-optimized buyer landing pages.",
+    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Full Stack"],
+    link: "https://www.cleanerscompare.com/",
+    isExternal: true,
+    image: "/image/cleaners-compare.jpg",
+    isAnonymous: false,
+  },
+  {
     badge: "Restaurant Web Experience",
     name: "Digital Food Platform",
     domain: "Internal Corporate System (NDA)",
@@ -28,21 +43,6 @@ export const productionProjects = [
     isExternal: true,
     image: "",
     isAnonymous: true,
-  },
-  {
-    badge: "Commercial B2B Marketplace",
-    name: "CleanersCompare",
-    domain: "cleanerscompare.com",
-    title: "B2B Comparison Marketplace for Laundry & Dry Cleaning Industry",
-    outcome:
-      "Developed a dedicated commercial marketplace connecting laundry businesses with suppliers for new/used equipment, spare parts, and specialized engineering services.",
-    contribution:
-      "Contributed to the Next.js full-stack platform, implementing product catalog filtering, supplier product showcase flows, and SEO-optimized buyer landing pages.",
-    tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Full Stack"],
-    link: "https://www.cleanerscompare.com/",
-    isExternal: true,
-    image: "/image/cleaners-compare.jpg",
-    isAnonymous: false,
   },
 ];
 

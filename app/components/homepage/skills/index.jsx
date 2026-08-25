@@ -12,7 +12,7 @@ function Skills() {
   const activeSkills = skillsData.filter(Boolean);
 
   return (
-    <section id="skills" className="py-24 border-t border-line section-elevated overflow-hidden relative">
+    <section id="skills" className="py-12 border-t border-line section-elevated overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent/5 rounded-full blur-[100px]" />

@@ -1,3 +1,13 @@
+// ============================================
+// 📄 RESUME/CV CONFIGURATION
+// ============================================
+// To update your resume: 
+// 1. Add the new PDF file to the /public folder
+// 2. Update the filename below (keep the leading slash)
+// 3. The change will automatically apply to navbar and footer
+// ============================================
+const RESUME_FILE = "/Saad_Ahmed_Raja_Full_Stack.pdf";
+// ============================================
 
 export const personalData = {
   name: "Saad Ahmed Raja",
@@ -16,5 +26,5 @@ export const personalData = {
   stackOverflow: 'https://stackoverflow.com/users/21936390/saad-raja',
   leetcode: "",
   devUsername: "",
-  resume: "/Saad_Ahmed_Raja_Software_Engineer.pdf"
+  resume: RESUME_FILE
 }
