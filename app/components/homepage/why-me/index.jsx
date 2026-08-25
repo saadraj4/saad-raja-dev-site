@@ -40,7 +40,7 @@ const differentiators = [
   {
     icon: FiZap,
     title: "Speed Without Shortcuts",
-    desc: "I ship fast because I've solved these problems before. Your project benefits from battle-tested patterns and proven architectures.",
+    desc: "I ship fast because I&apos;ve solved these problems before. Your project benefits from battle-tested patterns and proven architectures.",
   },
   {
     icon: FiShield,
@@ -50,7 +50,7 @@ const differentiators = [
   {
     icon: FiTrendingUp,
     title: "Business Thinking",
-    desc: "I don't just code features—I help validate ideas, prioritize what moves the needle, and maximize your development budget.",
+    desc: "I don&apos;t just code features—I help validate ideas, prioritize what moves the needle, and maximize your development budget.",
   },
   {
     icon: FiClock,
@@ -347,7 +347,7 @@ function WhyMe() {
                 </h3>
                 
                 <p className="text-white/70 text-sm md:text-base mb-6 max-w-xl mx-auto">
-                  Let's talk about your project. I'll give you honest feedback—no BS, no hard sell.
+                  Let&apos;s talk about your project. I&apos;ll give you honest feedback—no BS, no hard sell.
                 </p>
                 
                 <motion.a
@@ -356,7 +356,7 @@ function WhyMe() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>Let's Talk</span>
+                  <span>Let&apos;s Talk</span>
                   <motion.span 
                     className="text-xl"
                     animate={{ x: [0, 4, 0] }}
