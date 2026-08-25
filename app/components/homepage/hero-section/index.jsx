@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import AnimatedText from "../../motion/animated-text";
 import AnimatedCounter from "../../motion/animated-counter";
@@ -9,10 +9,7 @@ import {
   staggerContainer,
   fadeUp,
   fadeLeft,
-  fadeRight,
-  scaleUp,
   popIn,
-  viewportOnce,
 } from "../../motion/variants";
 
 const metrics = [
@@ -37,8 +34,6 @@ const metrics = [
 ];
 
 function HeroSection() {
-  const reduced = useReducedMotion();
-
   return (
     <header className="relative pt-24 pb-8 md:pt-32 lg:pt-40 md:pb-10 overflow-hidden">
       {/* Optimized static gradient orbs */}

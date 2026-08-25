@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { FiStar } from "react-icons/fi";
 import { TbQuote } from "react-icons/tb";
 

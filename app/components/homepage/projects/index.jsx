@@ -8,7 +8,7 @@ import MagneticCard from "../../motion/magnetic-card";
 import { motion } from "framer-motion";
 import { productionProjects, technicalProjects } from "../../../../utils/data/projects-data";
 
-function AbstractProjectGraphic({ name, tools }) {
+function AbstractProjectGraphic({ tools }) {
   return (
     <div className="w-full relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[240px] rounded-xl overflow-hidden border-2 border-[#3a3556] bg-gradient-to-br from-[#1a1633] via-[#201838] to-[#1a1633] p-4 sm:p-6 flex flex-col justify-between select-none shadow-2xl group">
       {/* Enhanced background with stronger glow */}
@@ -233,7 +233,7 @@ function WorkSection() {
                   {/* Right Side: Visual Mockup (5 columns on large screens) */}
                   <div className="lg:col-span-5 w-full h-full flex justify-center">
                     {project.isAnonymous ? (
-                      <AbstractProjectGraphic name={project.name} tools={project.tools} />
+                      <AbstractProjectGraphic tools={project.tools} />
                     ) : (
                       <motion.div
                         className="w-full relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[240px] rounded-xl overflow-hidden border border-line shadow-sm hover:shadow-lg bg-bg-soft"
@@ -308,7 +308,7 @@ function WorkSection() {
                       <div className="w-full">
                         {project.isAnonymous ? (
                           <div className="aspect-[16/9]">
-                            <AbstractProjectGraphic name={project.name} tools={project.tools} />
+                            <AbstractProjectGraphic tools={project.tools} />
                           </div>
                         ) : (
                           <div className="w-full relative aspect-[16/9] rounded-lg overflow-hidden border border-line shadow-sm bg-bg-soft">

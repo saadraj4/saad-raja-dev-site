@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { personalData } from "@/utils/data/personal-data";
 import Reveal from "../../reveal";
 import ContactForm from "./contactForm";
-import { FiMail, FiCopy, FiCheck, FiArrowUpRight, FiPhone, FiMapPin } from "react-icons/fi";
+import { FiMail, FiCopy, FiCheck, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaGithub, FaLinkedin, FaTwitter, FaStackOverflow, FaFacebook, FaInstagram } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";

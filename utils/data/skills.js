@@ -32,11 +32,7 @@ export const skillsData = [
   'MaterialUI',
   'Wordpress',
   'Selenium',
-  'Canva',
-  ''
-
-
-  
+  'Canva'
 ]
 
 // Choose your skills from below. Make sure it's in the same format and spelled correctly.
