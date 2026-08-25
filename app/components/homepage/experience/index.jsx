@@ -6,7 +6,7 @@ import { experiences } from "@/utils/data/experience";
 
 function Experience() {
   return (
-    <section id="experience" className="py-24 border-t border-line bg-gradient-to-b from-white to-bg-soft overflow-hidden relative">
+    <section id="experience" className="py-12 border-t border-line bg-gradient-to-b from-white to-bg-soft overflow-hidden relative">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-30 bg-grid-pattern pointer-events-none" />
       

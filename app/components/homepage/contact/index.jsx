@@ -31,7 +31,7 @@ function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-24 border-t border-line section-elevated overflow-hidden relative">
+    <section id="contact" className="py-12 border-t border-line section-elevated overflow-hidden relative">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-accent/8 via-accent/4 to-transparent rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-blue-500/6 to-transparent rounded-full blur-[100px] pointer-events-none translate-x-1/3 translate-y-1/3" />

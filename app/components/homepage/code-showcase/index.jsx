@@ -191,7 +191,7 @@ function CodeShowcase() {
   };
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-40"></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>

@@ -10,7 +10,13 @@ import {
 } from "framer-motion";
 
 // Animated number that counts up when scrolled into view
-export default function AnimatedCounter({ value, suffix = "", prefix = "", className = "" }) {
+export default function AnimatedCounter({ 
+  value, 
+  suffix = "", 
+  prefix = "", 
+  className = "",
+  immediate = false // New prop to start animation immediately
+}) {
   const ref = useRef(null);
   const motionVal = useMotionValue(0);
   const spring = useSpring(motionVal, { duration: 2000, bounce: 0 });
@@ -18,8 +24,12 @@ export default function AnimatedCounter({ value, suffix = "", prefix = "", class
   const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
 
   useEffect(() => {
-    if (isInView) motionVal.set(value);
-  }, [isInView, value, motionVal]);
+    // If immediate is true, start animation right away
+    // Otherwise wait for element to be in view
+    if (immediate || isInView) {
+      motionVal.set(value);
+    }
+  }, [immediate, isInView, value, motionVal]);
 
   return <motion.span ref={ref} className={className}>{display}</motion.span>;
 }

@@ -163,8 +163,7 @@ function HeroSection() {
           className="mt-10 pt-5 border-t border-line relative"
           variants={staggerContainer(0.1, 0.6)}
           initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
+          animate="show"
         >
           {/* Trust badge */}
           <motion.div
@@ -194,7 +193,7 @@ function HeroSection() {
           </motion.div>
 
           <div className="grid grid-cols-3 gap-2 sm:gap-6">
-            {metrics.map((m, i) => (
+            {metrics.map((m, idx) => (
               <motion.div
                 key={m.label}
                 variants={fadeUp(0)}
@@ -216,9 +215,14 @@ function HeroSection() {
                   <FiCheckCircle size={16} />
                 </motion.div>
                 <div className="relative z-10 min-w-0 text-center sm:text-left">
-                  <div className="text-xl sm:text-2xl font-extrabold text-ink tracking-tight">
-                    <AnimatedCounter value={m.value} suffix={m.suffix} />
-                  </div>
+                  <motion.div 
+                    className="text-xl sm:text-2xl font-extrabold text-ink tracking-tight"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + (idx * 0.1), type: "spring", stiffness: 200 }}
+                  >
+                    <AnimatedCounter value={m.value} suffix={m.suffix} immediate={true} />
+                  </motion.div>
                   <div className="text-[10px] sm:text-sm font-bold text-ink leading-tight">{m.label}</div>
                   <div className="hidden sm:block text-xs text-muted mt-0.5 break-words leading-tight">{m.sub}</div>
                 </div>

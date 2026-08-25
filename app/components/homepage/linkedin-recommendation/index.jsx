@@ -31,7 +31,7 @@ const linkedinRecommendations = [
 
 function LinkedInRecommendations() {
   return (
-    <section className="py-24 border-t border-line bg-white overflow-hidden relative">
+    <section className="py-12 border-t border-line bg-white overflow-hidden relative">
       {/* Decorative elements */}
       <div className="absolute top-20 right-0 w-96 h-96 bg-[#0A66C2]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-20 left-0 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
