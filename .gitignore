@@ -16,7 +16,6 @@ env/
 .env/
 
 # IDE
-.vscode/
 .idea/
 
 # OS
@@ -31,5 +30,4 @@ node_modules
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/.vscode
-.env
+config.bat
