@@ -40,7 +40,7 @@ const differentiators = [
   {
     icon: FiZap,
     title: "Speed Without Shortcuts",
-    desc: "I ship fast because I&apos;ve solved these problems before. Your project benefits from battle-tested patterns and proven architectures.",
+    desc: "I ship fast because I've solved these problems before. Your project benefits from battle-tested patterns and proven architectures.",
   },
   {
     icon: FiShield,
@@ -50,7 +50,7 @@ const differentiators = [
   {
     icon: FiTrendingUp,
     title: "Business Thinking",
-    desc: "I don&apos;t just code features—I help validate ideas, prioritize what moves the needle, and maximize your development budget.",
+    desc: "I don't just code features, I help validate ideas, prioritize what moves the needle, and maximize your development budget.",
   },
   {
     icon: FiClock,
@@ -92,11 +92,11 @@ function WhyMe() {
                 ⚡
               </div>
             </motion.div>
-            
+
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
               Why Choose Me?
             </h2>
-            
+
             <p className="text-xl sm:text-2xl text-white/80 leading-relaxed font-medium">
               A technical partner who moves as fast as you think
             </p>
@@ -121,20 +121,20 @@ function WhyMe() {
                   <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-accent/50 transition-all duration-300">
                     {/* Gradient glow on hover - removed white overlay */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-500`} />
-                    
+
                     <div className="relative z-10">
                       <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-3 shadow-lg`}>
                         <Icon className="w-5 h-5 text-white" />
                       </div>
-                      
+
                       <div className={`text-2xl md:text-3xl font-black mb-1 bg-gradient-to-br ${benefit.gradient} bg-clip-text text-transparent`}>
                         {benefit.value}
                       </div>
-                      
+
                       <div className="text-xs font-bold text-white mb-0.5">
                         {benefit.title}
                       </div>
-                      
+
                       <div className="text-[10px] text-white/50">
                         {benefit.description}
                       </div>
@@ -307,13 +307,13 @@ function WhyMe() {
                   >
                     <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-accent/50 transition-all duration-300 h-full">
                       <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-accent/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-500" />
-                      
+
                       <div className="relative z-10">
                         <div className="flex items-start gap-3 mb-3">
                           <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center border border-accent/20 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                             <Icon className="w-6 h-6 text-accent" />
                           </div>
-                          
+
                           <div className="flex-1 min-w-0">
                             <h4 className="text-lg font-black text-white mb-2 group-hover:text-accent transition-colors">
                               {diff.title}
@@ -345,11 +345,11 @@ function WhyMe() {
                 <h3 className="text-xl md:text-2xl font-black text-white mb-3">
                   Ready to Ship Something Great?
                 </h3>
-                
+
                 <p className="text-white/70 text-sm md:text-base mb-6 max-w-xl mx-auto">
-                  Let&apos;s talk about your project. I&apos;ll give you honest feedback—no BS, no hard sell.
+                  Let&apos;s talk about your project. I&apos;ll give you honest feedback no BS, no hard sell.
                 </p>
-                
+
                 <motion.a
                   href="#contact"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white text-ink font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all group"
@@ -357,7 +357,7 @@ function WhyMe() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <span>Let&apos;s Talk</span>
-                  <motion.span 
+                  <motion.span
                     className="text-xl"
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}
@@ -365,7 +365,7 @@ function WhyMe() {
                     →
                   </motion.span>
                 </motion.a>
-                
+
                 <p className="text-white/40 text-xs mt-4">
                   Free consultation • No commitment • Honest advice
                 </p>
