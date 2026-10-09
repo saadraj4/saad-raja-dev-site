@@ -139,7 +139,7 @@ export async function POST(req) {
       system: systemPrompt,
       messages: trimmedMessages,
       maxTokens: MAX_OUTPUT_TOKENS,
-      temperature: 0.3, // Consistent, factual responses
+      temperature: 0.2, // Strict factual adherence to ground truth
     });
 
     return result.toTextStreamResponse();
