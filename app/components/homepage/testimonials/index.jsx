@@ -360,7 +360,7 @@ function Testimonials() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                These aren&apos;t just numbers—they&apos;re a testament to quality, reliability, and client satisfaction
+                These aren&apos;t just numbers they&apos;re a testament to quality, reliability, and client satisfaction
               </motion.p>
             </div>
 

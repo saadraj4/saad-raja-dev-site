@@ -76,7 +76,7 @@ function HeroSection() {
           initial="hidden"
           animate="show"
         >
-          {/* Kicker badge — pops in */}
+          {/* Kicker badge  pops in */}
           <motion.div
             variants={popIn(0)}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-tint border border-accent-border text-accent text-xs font-bold uppercase tracking-wider mb-6"
@@ -85,7 +85,7 @@ function HeroSection() {
             Outcome First Engineering
           </motion.div>
 
-          {/* Title — character-by-character reveal with enhanced styling */}
+          {/* Title  character-by-character reveal with enhanced styling */}
           <motion.h1
             variants={fadeUp(0.05)}
             className="text-[2rem] sm:text-5xl lg:text-[4.2rem] font-extrabold leading-[1.15] tracking-tight text-ink max-w-[860px] relative"
@@ -120,12 +120,12 @@ function HeroSection() {
             </span>
           </motion.h1>
 
-          {/* Subtitle — slides from left */}
+          {/* Subtitle  slides from left */}
           <motion.p
             variants={fadeLeft(0.3)}
             className="text-base sm:text-lg md:text-xl leading-relaxed text-muted max-w-[620px] mt-5 sm:mt-7 font-normal"
           >
-            I build and ship web applications end to end — no half-finished
+            I build and ship web applications end to end no half-finished
             handoffs, no &ldquo;it works on my machine.&rdquo; You describe what
             you need; I turn it into something live, tested, and actively used.
           </motion.p>
@@ -201,7 +201,7 @@ function HeroSection() {
                   className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   aria-hidden="true"
                 />
-                
+
                 <motion.div
                   className="hidden sm:flex p-1.5 sm:p-2 rounded-lg bg-accent/10 text-accent mt-0.5 relative z-10 flex-shrink-0"
                   whileHover={{ rotate: 360 }}
@@ -210,7 +210,7 @@ function HeroSection() {
                   <FiCheckCircle size={16} />
                 </motion.div>
                 <div className="relative z-10 min-w-0 text-center sm:text-left">
-                  <motion.div 
+                  <motion.div
                     className="text-xl sm:text-2xl font-extrabold text-ink tracking-tight"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}

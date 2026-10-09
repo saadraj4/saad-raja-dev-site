@@ -11,14 +11,14 @@ const problems = [
     icon: FiLayers,
     tag: "Zero-to-One",
     title: "Launch your product without the guesswork",
-    desc: "You have an idea or a product spec. I take it from a blank repository to a live, working application — frontend, backend, database, and hosting, all handled by one developer with end-to-end accountability.",
+    desc: "You have an idea or a product spec. I take it from a blank repository to a live, working application  frontend, backend, database, and hosting, all handled by one developer with end-to-end accountability.",
   },
   {
     num: "02",
     icon: FiShield,
     tag: "High Trust & Security",
     title: "Make your transactions provably trustworthy",
-    desc: "If you're handling bookings, customer checkout, or records that must be tamper-proof, I engineer trust directly into the architecture — verifiable on-chain or backed by robust transactional databases.",
+    desc: "If you're handling bookings, customer checkout, or records that must be tamper-proof, I engineer trust directly into the architecture  verifiable on-chain or backed by robust transactional databases.",
   },
   {
     num: "03",
@@ -65,7 +65,7 @@ function WhatICanDo() {
                 >
                   {/* Subtle inner spotlight hover gradient */}
                   <div className="absolute inset-0 bg-radial-spotlight opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10" />
-                  
+
                   <div>
                     <div className="flex items-center justify-between mb-3 md:mb-5">
                       <span className="inline-flex items-center gap-1 md:gap-1.5 text-[10px] md:text-xs font-bold text-muted-2 uppercase tracking-wider">
@@ -75,7 +75,7 @@ function WhatICanDo() {
                         <span>·</span>
                         <span>{item.tag}</span>
                       </span>
-                      <motion.div 
+                      <motion.div
                         className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-bg-soft flex items-center justify-center text-muted group-hover:text-accent group-hover:bg-accent-tint transition-all"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >

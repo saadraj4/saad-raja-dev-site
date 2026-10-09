@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-// Card that tilts toward the cursor on hover — gives a 3D "magnetic" feel
+// Card that tilts toward the cursor on hover  gives a 3D "magnetic" feel
 export default function MagneticCard({ children, className = "", intensity = 8 }) {
   const ref = useRef(null);
   const x = useMotionValue(0.5);
